@@ -6059,6 +6059,8 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 custom_data_layer_0/name = "Square"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "Type"
+custom_data_layer_1/type = 2
 sources/0 = SubResource("TileSetAtlasSource_qkx47")
 
 [node name="TileMap" type="TileMap"]
@@ -6074,4 +6076,6 @@ layer_2/name = "PanelType"
 layer_2/tile_data = PackedInt32Array(393222, 393216, 0, 524299, 393216, 0, 327697, 393216, 0, 524296, 1703936, 50, 262151, 65536, 55, 196621, 131072, 51, 393223, 131072, 51, 458760, 131072, 51, 393224, 1507328, 54, 262155, 1507328, 54, 458761, 1507328, 54, 458763, 1507328, 54, 262160, 1507328, 54, 327696, 1507328, 54, 393232, 1507328, 54, 65549, 4128768, 49, 65550, 4128768, 49, 65551, 4128768, 49, 65552, 4128768, 49, 131088, 4128768, 49, 131087, 4128768, 49, 131086, 4128768, 49, 131085, 4128768, 49, 327689, 458752, 27, 196625, 393216, 27, 524295, 2490368, 11, 262161, 2490368, 268435467, 458764, 2555904, 34, 524297, 3276800, 43)
 layer_3/name = "Selected"
 layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Movement"
+layer_4/tile_data = PackedInt32Array(393229, 1441792, 50)
 script = ExtResource("2_4a7he")
