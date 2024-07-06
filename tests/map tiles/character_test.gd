@@ -1,6 +1,8 @@
 @icon("res://icons/icon_happy.svg")
 extends Node2D
 
+# TODO: SOLO APARECER TILES DISPONIBLES AL CLICKEAR AL PERSONAJE
+
 @export_range(0,9) var movement = 1
 
 var mouse_inside_area = false
