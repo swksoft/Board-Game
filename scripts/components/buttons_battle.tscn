@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dc7hg2faq7b12"]
+
+[node name="ButtonsBattle" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "ATTACK"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+text = "DEFEND"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 2
+text = "EVADE"

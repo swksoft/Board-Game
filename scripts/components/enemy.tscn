@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://df23qy73jvoqn"]
+
+[ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_gratn"]
+[ext_resource type="Texture2D" uid="uid://c004fvlgfiffc" path="res://ui/progress_bar/healthbarUnder.png" id="2_f63po"]
+[ext_resource type="Texture2D" uid="uid://dgc5mirn302el" path="res://ui/progress_bar/healthbarProgress.png" id="3_ih4hj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw7nl"]
+atlas = ExtResource("1_gratn")
+region = Rect2(0, 1920, 32, 32)
+
+[node name="Enemy" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IconTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hw7nl")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("2_f63po")
+texture_progress = ExtResource("3_ih4hj")

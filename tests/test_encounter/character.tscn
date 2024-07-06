@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://decadn7s1enn8"]
+
+[ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_gpjfh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tcnk"]
+atlas = ExtResource("1_gpjfh")
+region = Rect2(0, 1920, 32, 32)
+
+[node name="Character" type="VBoxContainer"]
+offset_right = 64.0
+offset_bottom = 140.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_8tcnk")
+expand_mode = 1
+
+[node name="StatGrid" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="HP" type="Label" parent="StatGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "HP"
+
+[node name="hp_value" type="Label" parent="StatGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "<int>"
+
+[node name="ATK" type="Label" parent="StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "ATK"
+
+[node name="atk_value" type="Label" parent="StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "<int>"
+
+[node name="DFS" type="Label" parent="StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "DFS"
+
+[node name="dfs_value" type="Label" parent="StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "<int>"
+
+[node name="EVA" type="Label" parent="StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "EVA"
+
+[node name="eva_value" type="Label" parent="StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "<int>"

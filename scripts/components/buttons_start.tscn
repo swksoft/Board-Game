@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bny1i154yr12k"]
+
+[node name="ButtonsStart" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "ESCAPE"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+text = "INTERACT"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 2
+text = "FIGHT"
