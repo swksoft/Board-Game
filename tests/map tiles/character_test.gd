@@ -2,6 +2,8 @@
 extends Node2D
 
 # TODO: SOLO APARECER TILES DISPONIBLES AL CLICKEAR AL PERSONAJE
+# TODO: al presionar click derecho se deben quitar los cuadros disponibles
+# TODO Testear si al poner 2 jugadores cada uno se mueve por su cuenta
 
 @export_range(0,9) var movement = 1
 
