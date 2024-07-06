@@ -13,7 +13,8 @@ enum SquareType {
 	TRAP = 64,
 	STAIRS = 128,
 	BOSS = 256,
-	ESCAPE = 512
+	ESCAPE = 512,
+	LIFE_UP = 1024
 }
 
 func _process(_delta):
