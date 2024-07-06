@@ -2,6 +2,20 @@ extends TileMap
 
 var select_layer = 3
 
+enum SquareType {
+	NONE = 0,
+	BATTLE = 1,
+	TREASURE = 2,
+	DIALOG = 4,
+	BLIND = 8,
+	EVENT = 16,
+	BATTLE_EVENT = 32,
+	TRAP = 64,
+	STAIRS = 128,
+	BOSS = 256,
+	ESCAPE = 512
+}
+
 func _process(_delta):
 	if get_used_cells(select_layer).size() != 0:
 		erase_cell(select_layer, get_used_cells(select_layer)[0])
