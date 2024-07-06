@@ -12,6 +12,7 @@ size = Vector2(32, 32)
 
 [node name="CharacterTest" type="Node2D"]
 script = ExtResource("1_roeyl")
+movement = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_mmps4")
