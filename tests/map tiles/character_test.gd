@@ -12,11 +12,12 @@ var mouse_inside_area = false
 var panel_layer = 1
 var movement_layer = 4
 var type_layer = 2
+var can_move = false
 
 @onready var tile_map = get_parent().get_node("TileMap") as TileMap
 
 func _ready():
-	show_adjacent_tiles(get_available_tiles())
+	#show_adjacent_tiles(get_available_tiles())
 	
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 
@@ -88,25 +89,31 @@ func is_valid_tile(tile_position):
 	return false
 
 func _process(_delta):
+	var player_position: Vector2i = tile_map.local_to_map(global_position)
 	if mouse_inside_area:
 		if Input.is_action_just_pressed("click"):
-			pass
-			#print_debug("Character Clicked")
+			can_move = true
+			show_adjacent_tiles(get_available_tiles())
+				
+	elif Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("click"):
+		can_move = false
+		delete_adjacent_tiles(get_available_tiles())
 
 func _input(event):
-	var target_tile = tile_map.local_to_map(get_global_mouse_position())
-	var tile_data: TileData = tile_map.get_cell_tile_data(movement_layer, target_tile)
-	if tile_data == null: return
-	
-	var is_walkable = tile_data.get_custom_data("CanMove")
-	
-	if Input.is_action_just_pressed("click") and is_walkable:
-		delete_adjacent_tiles(get_available_tiles())
-		position = tile_map.map_to_local(target_tile)
+	if can_move:
+		var target_tile = tile_map.local_to_map(get_global_mouse_position())
+		var tile_data: TileData = tile_map.get_cell_tile_data(movement_layer, target_tile)
+		if tile_data == null: return
 		
-		show_adjacent_tiles(get_available_tiles())
+		var is_walkable = tile_data.get_custom_data("CanMove")
 		
-		print("El jugador está en un panel de tipo: ", get_current_tile_type())
+		if Input.is_action_just_pressed("click") and is_walkable:
+			delete_adjacent_tiles(get_available_tiles())
+			position = tile_map.map_to_local(target_tile)
+			
+			show_adjacent_tiles(get_available_tiles())
+			
+			print("El jugador está en un panel de tipo: ", get_current_tile_type())
 
 func _on_area_2d_mouse_entered():
 	mouse_inside_area = true
