@@ -12,6 +12,12 @@ offset_bottom = 140.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Character"
+horizontal_alignment = 1
+
 [node name="IconTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -71,3 +77,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 12
 text = "<int>"
+
+[node name="Label" type="Label" parent="StatGrid"]
+layout_mode = 2

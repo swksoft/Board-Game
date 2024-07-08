@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://df23qy73jvoqn"]
+
+[ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_gratn"]
+[ext_resource type="Script" path="res://tests/test_encounter/enemy/Stats.gd" id="1_y4rrk"]
+[ext_resource type="Script" path="res://tests/test_encounter/enemy/Behavior.gd" id="2_843rh"]
+[ext_resource type="Texture2D" uid="uid://c004fvlgfiffc" path="res://ui/progress_bar/healthbarUnder.png" id="2_f63po"]
+[ext_resource type="Texture2D" uid="uid://dgc5mirn302el" path="res://ui/progress_bar/healthbarProgress.png" id="3_ih4hj"]
+[ext_resource type="Script" path="res://tests/test_encounter/enemy/LifeBar.gd" id="6_ua6ad"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw7nl"]
+atlas = ExtResource("1_gratn")
+region = Rect2(1280, 2176, 32, 32)
+
+[node name="Enemy" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("1_y4rrk")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("2_843rh")
+
+[node name="Sprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hw7nl")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Enemy"
+horizontal_alignment = 1
+
+[node name="LifeBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+min_value = 100.0
+value = 100.0
+texture_under = ExtResource("2_f63po")
+texture_progress = ExtResource("3_ih4hj")
+script = ExtResource("6_ua6ad")
+stat_node = NodePath("../Stats")
