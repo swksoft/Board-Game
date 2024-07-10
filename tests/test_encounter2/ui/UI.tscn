@@ -11952,6 +11952,21 @@ load_path = "res://.godot/imported/ProjectUtumno_full.png-ce7627a9b7fed7635b4ac0
 atlas = SubResource("CompressedTexture2D_lafjy")
 region = Rect2(480, 1920, 32, 32)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n3h4"]
+bg_color = Color(0.274791, 0.0168059, 0.040561, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs444"]
+bg_color = Color(0.760958, 0, 0.22319, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcu14"]
 atlas = SubResource("CompressedTexture2D_lafjy")
 region = Rect2(672, 1952, 32, 32)
@@ -12019,21 +12034,6 @@ expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xsgp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n3h4"]
-bg_color = Color(0.274791, 0.0168059, 0.040561, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs444"]
-bg_color = Color(0.760958, 0, 0.22319, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdi02"]
 atlas = ExtResource("1_dxl6b")
 region = Rect2(96, 1184, 32, 32)
@@ -12058,6 +12058,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jjnyj")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color(0.676605, 0.676605, 0.676605, 1)
@@ -12080,6 +12081,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
+metadata/_edit_lock_ = true
 
 [node name="Upper" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -12159,7 +12161,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -12167,7 +12172,19 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_netmf")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
+value = 100.0
+show_percentage = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -12175,7 +12192,19 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_hcu14")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
+value = 100.0
+show_percentage = false
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -12183,13 +12212,34 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_iiglx")
 expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
+value = 100.0
+show_percentage = false
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer4"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_au5w6")
 expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
+value = 100.0
+show_percentage = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Center/PanelContainer"]
 layout_mode = 2
@@ -12211,12 +12261,15 @@ text = "
 
 
 
-PICO ha chupado [Dick Pene]
-VENOM ha sido resucitado.
-Has perdido.
-AlexElPato ha matado a Niggerman."
+
+
+
+
+
+"
 scroll_following = true
 shortcut_keys_enabled = false
+metadata/_edit_lock_ = true
 
 [node name="Bottom" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

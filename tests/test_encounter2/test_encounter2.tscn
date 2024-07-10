@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg6tauw0ilnyr"]
+[gd_scene load_steps=3 format=3 uid="uid://cg6tauw0ilnyr"]
 
 [ext_resource type="PackedScene" uid="uid://dmvvhigk0kkf0" path="res://tests/test_encounter2/ui/UI.tscn" id="1_fcqut"]
+[ext_resource type="PackedScene" uid="uid://bfrvbk0tsfitk" path="res://tests/test_encounter2/combat_manager.tscn" id="2_t14s4"]
 
 [node name="TestEncounter2" type="Control"]
 layout_mode = 3
@@ -10,5 +11,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Ui" parent="." instance=ExtResource("1_fcqut")]
+[node name="Ui" parent="." node_paths=PackedStringArray("combat_manager") instance=ExtResource("1_fcqut")]
 layout_mode = 1
+combat_manager = NodePath("../CombatManager")
+
+[node name="CombatManager" parent="." instance=ExtResource("2_t14s4")]
+
+[connection signal="update_information" from="CombatManager" to="Ui" method="_on_combat_manager_update_information"]
+
+[editable path="Ui"]
