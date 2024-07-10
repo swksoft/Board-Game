@@ -89,11 +89,17 @@ func is_valid_tile(tile_position):
 	return false
 
 func _process(_delta):
-	var player_position: Vector2i = tile_map.local_to_map(global_position)
 	if mouse_inside_area:
 		if Input.is_action_just_pressed("click"):
-			can_move = true
-			show_adjacent_tiles(get_available_tiles())
+			if can_move:
+				can_move = false
+				delete_adjacent_tiles(get_available_tiles())
+			else:	
+				can_move = true
+				show_adjacent_tiles(get_available_tiles())
+		elif Input.is_action_just_pressed("right_click"):
+			can_move = false
+			delete_adjacent_tiles(get_available_tiles())
 				
 	elif Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("click"):
 		can_move = false
