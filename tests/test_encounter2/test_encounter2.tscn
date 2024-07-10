@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg6tauw0ilnyr"]
+
+[ext_resource type="PackedScene" uid="uid://dmvvhigk0kkf0" path="res://tests/test_encounter2/ui/UI.tscn" id="1_fcqut"]
+
+[node name="TestEncounter2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ui" parent="." instance=ExtResource("1_fcqut")]
+layout_mode = 1

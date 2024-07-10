@@ -21,14 +21,6 @@ script = ExtResource("1_y4rrk")
 [node name="Behavior" type="Node" parent="."]
 script = ExtResource("2_843rh")
 
-[node name="Sprite" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_hw7nl")
-expand_mode = 1
-
 [node name="Name" type="Label" parent="."]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
@@ -44,3 +36,11 @@ texture_under = ExtResource("2_f63po")
 texture_progress = ExtResource("3_ih4hj")
 script = ExtResource("6_ua6ad")
 stat_node = NodePath("../Stats")
+
+[node name="Sprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hw7nl")
+expand_mode = 1
