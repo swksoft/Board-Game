@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://by7hvomm8ir04"]
+
+[ext_resource type="Script" path="res://tests/test_encounter2/ui/dice_container.gd" id="1_rvycu"]
+[ext_resource type="PackedScene" uid="uid://b3sbwuiquigds" path="res://tests/test_encounter2/ui/dice.tscn" id="2_7sqxx"]
+
+[node name="DiceContainer" type="HBoxContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_rvycu")
+dice_scene = ExtResource("2_7sqxx")

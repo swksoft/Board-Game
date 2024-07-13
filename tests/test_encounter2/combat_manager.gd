@@ -3,34 +3,34 @@ class_name CombatManager
 
 signal turn_advanced()
 signal update_information(text: String)
+signal chars_ready
 
-@export var characters : Dictionary = {}
+var characters : Array = []
+
+@export var dice_manager : DiceManager
 
 func _ready():
-	update_information.emit("Test.\n")
 	create_character("Hero", 100, 20, 10, 30)
 	create_character("Mage", 80, 25, 5, 25)
 	create_character("Warrior", 120, 15, 20, 1)
+	chars_ready.emit()
 	
 	#print_available_characters()
 	
 func create_character(character_name : String, hp : int, atk : int, dfs : int, eva : int):
 	var character_data = {
+		"name": character_name,
 		"hp": hp,
 		"atk": atk,
 		"dfs": dfs,
-		"eva": eva
+		"eva": eva,
+		"dice": 6
 	}
-	characters[character_name] = character_data
+	characters.push_back(character_data)
 	return character_data
 
-func get_character(char_name: String):
-	if characters.has(char_name):
-		return characters[char_name]
-	else:
-		return null
 
-func print_available_characters():
-	for char_name in characters.keys():
-		var character_data = characters[char_name]
-		print("Character: ", char_name, " - Data: ", character_data)
+func _on_attack_button_button_down():
+	turn_advanced.emit()
+	for character in characters:
+		dice_manager.throw_dice(character.dice, character)

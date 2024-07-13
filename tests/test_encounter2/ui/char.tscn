@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://drfn4rnl7u4cu"]
+
+[ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_hlg5v"]
+[ext_resource type="Script" path="res://tests/test_encounter2/ui/char.gd" id="1_k7a7h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xd8mp"]
+bg_color = Color(0, 0, 0, 0.133333)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.215686)
+expand_margin_top = 5.0
+expand_margin_bottom = 40.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbku5"]
+bg_color = Color(1, 1, 1, 0.164706)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m28m6"]
+atlas = ExtResource("1_hlg5v")
+region = Rect2(0, 2560, 32, 32)
+
+[node name="Char1" type="PanelContainer" node_paths=PackedStringArray("name_label", "hp_label", "atk_label", "dfs_label", "eva_label")]
+custom_minimum_size = Vector2(90, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xd8mp")
+script = ExtResource("1_k7a7h")
+name_label = NodePath("VBoxContainer/NameLabel")
+hp_label = NodePath("VBoxContainer/GridContainer/HPLabel")
+atk_label = NodePath("VBoxContainer/GridContainer/ATKLabel")
+dfs_label = NodePath("VBoxContainer/GridContainer/DFSLabel")
+eva_label = NodePath("VBoxContainer/GridContainer/EVALabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Pico"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mbku5")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_m28m6")
+expand_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "HP"
+horizontal_alignment = 1
+
+[node name="HPLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "<int>"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "ATK"
+horizontal_alignment = 1
+
+[node name="ATKLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "<int>"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "DFS"
+horizontal_alignment = 1
+
+[node name="DFSLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "<int>"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "EVA"
+horizontal_alignment = 1
+
+[node name="EVALabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "<int>"
+horizontal_alignment = 1
