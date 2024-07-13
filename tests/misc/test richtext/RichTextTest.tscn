@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://wevrqefimaij"]
+
+[node name="RichTextTest" type="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -102.0
+offset_right = 147.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Chitloto
+[b]Chitloto[/b]
+[i]Chitloto[/i]
+[color=#88ffff22]Chicloto[/color]
+[wave amp=50 freq=5]Chitloto[/wave]
+[shake amp=50 freq=5]Chitloto[/shake]
+[fade amp=50 freq=5]Chitloto[/fade]
+[rainbow freq=1.0 sat=0.8 val=0.8]Chitloto[/rainbow]
+[tornado freq=1.0 sat=0.8 val=0.8]Chitloto[/tornado]
+[hint=Chitloto]Chitloto[/hint]
+[img=16x16]res://icon.svg[/img]
+[font_size=30]Chitloto[/font_size]
+[pulse][color=red]CHITLOTO[/color][/pulse]"
+scroll_active = false
+scroll_following = true
