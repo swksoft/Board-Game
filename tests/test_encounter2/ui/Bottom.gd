@@ -11,5 +11,5 @@ func on_chars_ready():
 	for char in combat_manager.characters:
 		var instance = char_ui_scene.instantiate()
 		instance.init(char)
-		add_child(instance)
+		add_child(instance, true)
 	move_child(center, 2)

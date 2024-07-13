@@ -2,29 +2,12 @@ extends Control
 
 @export var combat_manager : CombatManager
 
-@export var sprite_turn : Resource 
-
-func update_turns(value):
-	var child_number = $VBoxContainer/Upper/HBoxContainer.get_children()
-	print(child_number)
-	if child_number.size() > 0:
-		for child in child_number.size():
-			child_number[child].queue_free()
-		
-	for turn in combat_manager.total_turns:
-		var texture_container = TextureRect.new()
-		texture_container.texture = sprite_turn
-		$VBoxContainer/Upper/HBoxContainer.add_child(texture_container, true, Node.INTERNAL_MODE_FRONT)
-
 func _ready():
 	var characters = combat_manager.characters
 	#_on_combat_manager_update_information(characters)
 	
 func _on_combat_manager_update_information(text):
 	$VBoxContainer/Center/PanelContainer/RichTextLabel.append_text(text)
-
-func _on_update_turns(value):
-	update_turns(value)
 
 func _on_combat_manager_characters_ready():
 	var characters = combat_manager.characters

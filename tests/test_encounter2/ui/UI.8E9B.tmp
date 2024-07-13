@@ -1,12 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://dmvvhigk0kkf0"]
+[gd_scene load_steps=24 format=3 uid="uid://dmvvhigk0kkf0"]
 
 [ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_dxl6b"]
 [ext_resource type="Script" path="res://tests/test_encounter2/ui/UI.gd" id="1_jjnyj"]
-[ext_resource type="Script" path="res://tests/test_encounter2/ui/TurnContainer.gd" id="3_gcgbw"]
 [ext_resource type="Script" path="res://tests/test_encounter2/ui/Bottom.gd" id="3_lpqyd"]
 [ext_resource type="PackedScene" uid="uid://drfn4rnl7u4cu" path="res://tests/test_encounter2/ui/char.tscn" id="4_30ua6"]
 [ext_resource type="PackedScene" uid="uid://by7hvomm8ir04" path="res://tests/test_encounter2/ui/dice_container.tscn" id="5_sv7e8"]
 [ext_resource type="PackedScene" uid="uid://bfrmedskhhujn" path="res://tests/test_encounter2/ui/progress_bar.tscn" id="6_3uy6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksvkt"]
+atlas = ExtResource("1_dxl6b")
+region = Rect2(992, 1280, 32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_46rfv"]
 texture = ExtResource("1_dxl6b")
@@ -6051,10 +6054,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_46rfv")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2pts"]
-atlas = ExtResource("1_dxl6b")
-region = Rect2(992, 1280, 32, 32)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v738g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2m4f"]
@@ -12006,7 +12005,6 @@ expand_margin_bottom = 3.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xsgp"]
 
 [node name="Ui" type="Control"]
-process_mode = 1
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -12015,6 +12013,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jjnyj")
+sprite_turn = SubResource("AtlasTexture_ksvkt")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -12046,10 +12045,8 @@ size_flags_horizontal = 4
 theme_override_constants/h_separation = 12
 columns = 8
 
-[node name="TurnContainer" type="HBoxContainer" parent="VBoxContainer/Upper"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Upper"]
 layout_mode = 2
-script = ExtResource("3_gcgbw")
-sprite_turn = SubResource("AtlasTexture_s2pts")
 
 [node name="TextureRect14" type="HSeparator" parent="VBoxContainer/Upper"]
 custom_minimum_size = Vector2(16, 32)
@@ -12192,13 +12189,7 @@ text = "
 
 
 
-
-
-
-
-
 "
-scroll_active = false
 scroll_following = true
 shortcut_keys_enabled = false
 metadata/_edit_lock_ = true
@@ -12240,7 +12231,4 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_1xsgp")
 
 [node name="ProgressBar" parent="VBoxContainer/Bottom/Center" instance=ExtResource("6_3uy6v")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/Bottom/Center"]
 layout_mode = 2

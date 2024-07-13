@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg6tauw0ilnyr"]
+[gd_scene load_steps=6 format=3 uid="uid://cg6tauw0ilnyr"]
 
 [ext_resource type="PackedScene" uid="uid://dmvvhigk0kkf0" path="res://tests/test_encounter2/ui/UI.tscn" id="1_fcqut"]
 [ext_resource type="PackedScene" uid="uid://bfrvbk0tsfitk" path="res://tests/test_encounter2/combat_manager.tscn" id="2_t14s4"]
+[ext_resource type="PackedScene" uid="uid://cfrvndgnwmie8" path="res://tests/test_encounter2/ui/game_over_screen.tscn" id="2_tkucy"]
 [ext_resource type="PackedScene" uid="uid://crkxed8hluw1o" path="res://tests/test_encounter2/dice_manager.tscn" id="3_vat8h"]
 [ext_resource type="Script" path="res://tests/test_encounter2/dice_manager.gd" id="4_0bvtn"]
 
@@ -17,6 +18,10 @@ grow_vertical = 2
 layout_mode = 1
 combat_manager = NodePath("../CombatManager")
 
+[node name="TurnContainer" parent="Ui/VBoxContainer/Upper" index="0" node_paths=PackedStringArray("combat_manager", "upper_container")]
+combat_manager = NodePath("../../../../CombatManager")
+upper_container = NodePath(".")
+
 [node name="Bottom" parent="Ui/VBoxContainer" index="2" node_paths=PackedStringArray("combat_manager")]
 combat_manager = NodePath("../../../CombatManager")
 
@@ -26,6 +31,10 @@ combat_manager = NodePath("../../../../../CombatManager")
 
 [node name="ProgressBar" parent="Ui/VBoxContainer/Bottom/Center" index="4" node_paths=PackedStringArray("combat_manager")]
 combat_manager = NodePath("../../../../../CombatManager")
+
+[node name="GameOverScreen" parent="." instance=ExtResource("2_tkucy")]
+visible = false
+layout_mode = 1
 
 [node name="CombatManager" parent="." node_paths=PackedStringArray("dice_manager") instance=ExtResource("2_t14s4")]
 dice_manager = NodePath("../DiceManager")
