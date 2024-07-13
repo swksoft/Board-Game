@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://csxaejfvqkwe"]
+
+[ext_resource type="Script" path="res://tests/test_encounter2/ui/enemy.gd" id="1_xmw7g"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lafjy"]
+load_path = "res://.godot/imported/ProjectUtumno_full.png-ce7627a9b7fed7635b4ac06a207f21fd.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_netmf"]
+atlas = SubResource("CompressedTexture2D_lafjy")
+region = Rect2(480, 1920, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n3h4"]
+bg_color = Color(0.274791, 0.0168059, 0.040561, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs444"]
+bg_color = Color(0.760958, 0, 0.22319, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="Enemy" type="VBoxContainer" node_paths=PackedStringArray("rect")]
+script = ExtResource("1_xmw7g")
+rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_netmf")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
+value = 100.0
+show_percentage = false

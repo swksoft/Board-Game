@@ -5,14 +5,20 @@ extends PanelContainer
 @export var atk_label : Label
 @export var dfs_label : Label
 @export var eva_label : Label
+@export var rect : TextureRect
+var combat_manager : CombatManager
 
 var char
+
+func _ready():
+	combat_manager = get_tree().get_first_node_in_group("combat_manager")
+	combat_manager.turn_advanced.connect(update)
 
 func init(coming_char):
 	#coming_char.stat_changed.connect(update)
 	char = coming_char
+	rect.texture.region = Rect2(char.image.x, char.image.y, 32, 32)
 	update()
-	pass
 	
 func update():
 	name_label.text = char.name

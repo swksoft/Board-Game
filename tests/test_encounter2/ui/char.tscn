@@ -25,7 +25,7 @@ border_color = Color(0, 0, 0, 1)
 atlas = ExtResource("1_hlg5v")
 region = Rect2(0, 2560, 32, 32)
 
-[node name="Char1" type="PanelContainer" node_paths=PackedStringArray("name_label", "hp_label", "atk_label", "dfs_label", "eva_label")]
+[node name="Char1" type="PanelContainer" node_paths=PackedStringArray("name_label", "hp_label", "atk_label", "dfs_label", "eva_label", "rect")]
 custom_minimum_size = Vector2(90, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_xd8mp")
 script = ExtResource("1_k7a7h")
@@ -34,6 +34,7 @@ hp_label = NodePath("VBoxContainer/GridContainer/HPLabel")
 atk_label = NodePath("VBoxContainer/GridContainer/ATKLabel")
 dfs_label = NodePath("VBoxContainer/GridContainer/DFSLabel")
 eva_label = NodePath("VBoxContainer/GridContainer/EVALabel")
+rect = NodePath("VBoxContainer/PanelContainer/TextureRect")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

@@ -8,7 +8,8 @@ func _ready():
 	dice_manager.dice_thrown.connect(on_dice_thrown)
 	combat_manager.turn_advanced.connect(clear)
 	
-func on_dice_thrown(result, _user):
+func on_dice_thrown(result, user):
+	if !user.type == "friend": return
 	var dice_scene = dice_scene.instantiate()
 	dice_scene.init(result)
 	add_child(dice_scene)

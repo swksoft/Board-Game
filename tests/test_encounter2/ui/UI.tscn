@@ -1,10 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://dmvvhigk0kkf0"]
+[gd_scene load_steps=20 format=3 uid="uid://dmvvhigk0kkf0"]
 
 [ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_dxl6b"]
 [ext_resource type="Script" path="res://tests/test_encounter2/ui/UI.gd" id="1_jjnyj"]
 [ext_resource type="Script" path="res://tests/test_encounter2/ui/TurnContainer.gd" id="3_gcgbw"]
 [ext_resource type="Script" path="res://tests/test_encounter2/ui/Bottom.gd" id="3_lpqyd"]
 [ext_resource type="PackedScene" uid="uid://drfn4rnl7u4cu" path="res://tests/test_encounter2/ui/char.tscn" id="4_30ua6"]
+[ext_resource type="PackedScene" uid="uid://b2qg16u6t0ky7" path="res://tests/test_encounter2/ui/enemy_container.tscn" id="4_jk0a8"]
+[ext_resource type="PackedScene" uid="uid://csxaejfvqkwe" path="res://tests/test_encounter2/ui/enemy.tscn" id="5_rem0d"]
 [ext_resource type="PackedScene" uid="uid://by7hvomm8ir04" path="res://tests/test_encounter2/ui/dice_container.tscn" id="5_sv7e8"]
 [ext_resource type="PackedScene" uid="uid://bfrmedskhhujn" path="res://tests/test_encounter2/ui/progress_bar.tscn" id="6_3uy6v"]
 
@@ -11950,40 +11952,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_1tsfy")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lafjy"]
-load_path = "res://.godot/imported/ProjectUtumno_full.png-ce7627a9b7fed7635b4ac06a207f21fd.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_netmf"]
-atlas = SubResource("CompressedTexture2D_lafjy")
-region = Rect2(480, 1920, 32, 32)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n3h4"]
-bg_color = Color(0.274791, 0.0168059, 0.040561, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs444"]
-bg_color = Color(0.760958, 0, 0.22319, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcu14"]
-atlas = SubResource("CompressedTexture2D_lafjy")
-region = Rect2(672, 1952, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iiglx"]
-atlas = SubResource("CompressedTexture2D_lafjy")
-region = Rect2(960, 1920, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_au5w6"]
-atlas = SubResource("CompressedTexture2D_lafjy")
-region = Rect2(1696, 1888, 32, 32)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d71j3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 8
@@ -12081,91 +12049,9 @@ rendering_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(262144, 3211264, 4, 262145, 3211264, 4, 262146, 3342336, 4, 262147, 3342336, 4, 327684, 3473408, 4, 327685, 3473408, 4, 327686, 3604480, 4, 327687, 3604480, 4, 327688, 3735552, 4, 327689, 3735552, 4, 327690, 3211264, 4, 327691, 3211264, 4, 327692, 3342336, 4, 327693, 3342336, 4, 327694, 3473408, 4, 327695, 3473408, 4, 327696, 3604480, 4, 327697, 3735552, 4, 327698, 3735552, 4, 262162, 3211264, 4, 262161, 3735552, 4, 262160, 3735552, 4, 262159, 3473408, 4, 262158, 3342336, 4, 262157, 3342336, 4, 262156, 3211264, 4, 262155, 3211264, 4, 262154, 3211264, 4, 262153, 3211264, 4, 262152, 3735552, 4, 262151, 3866624, 4, 262150, 3604480, 4, 262149, 3735552, 4, 262148, 3473408, 4, 327680, 3211264, 4, 327681, 3211264, 4, 327682, 3342336, 4, 327683, 3342336, 4, 0, 3276800, 4, 65536, 3932160, 4, 131072, 3538944, 4, 196608, 3801088, 4, 1, 4063232, 4, 65537, 3276800, 4, 131073, 3145728, 4, 196609, 3801088, 4, 2, 3276800, 4, 65538, 3538944, 4, 131074, 3932160, 4, 196610, 3538944, 4, 3, 3932160, 4, 65539, 3145728, 4, 131075, 3670016, 4, 196611, 3801088, 4, 4, 3538944, 4, 65540, 3538944, 4, 131076, 3407872, 4, 196612, 3538944, 4, 5, 3670016, 4, 65541, 3407872, 4, 131077, 3407872, 4, 196613, 4063232, 4, 6, 3932160, 4, 65542, 3145728, 4, 131078, 3932160, 4, 196614, 3276800, 4, 7, 3932160, 4, 65543, 3801088, 4, 131079, 3407872, 4, 196615, 3932160, 4, 8, 3932160, 4, 65544, 3276800, 4, 131080, 3145728, 4, 196616, 3538944, 4, 9, 3276800, 4, 65545, 3145728, 4, 131081, 3276800, 4, 196617, 3932160, 4, 10, 3670016, 4, 65546, 3801088, 4, 131082, 3407872, 4, 196618, 3538944, 4, 11, 3276800, 4, 65547, 3276800, 4, 131083, 3932160, 4, 196619, 3538944, 4, 12, 3538944, 4, 65548, 4063232, 4, 131084, 3538944, 4, 196620, 3670016, 4, 13, 3670016, 4, 65549, 3145728, 4, 131085, 3670016, 4, 196621, 4063232, 4, 14, 3538944, 4, 65550, 3670016, 4, 131086, 3932160, 4, 196622, 3145728, 4, 15, 3145728, 4, 65551, 3801088, 4, 131087, 3407872, 4, 196623, 3801088, 4, 16, 3670016, 4, 65552, 3801088, 4, 131088, 3145728, 4, 196624, 3538944, 4, 17, 3538944, 4, 65553, 3932160, 4, 131089, 3801088, 4, 196625, 3145728, 4, 18, 4063232, 4, 65554, 3276800, 4, 131090, 3407872, 4, 196626, 3276800, 4, 393216, 3211264, 4, 393218, 3342336, 4, 393220, 3473408, 4, 393222, 3604480, 4, 393224, 3735552, 4, 393225, 3735552, 4, 393227, 3342336, 4, 393229, 3473408, 4, 393231, 3604480, 4, 393233, 3735552, 4, 393234, 3735552, 4, 393217, 3211264, 4, 393219, 3342336, 4, 393221, 3473408, 4, 393223, 3604480, 4, 393226, 3211264, 4, 393228, 3342336, 4, 393230, 3473408, 4, 393232, 3604480, 4)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Center/PanelContainer"]
-clip_contents = true
+[node name="EnemyContainer" parent="VBoxContainer/Center/PanelContainer" instance=ExtResource("4_jk0a8")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_netmf")
-expand_mode = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
-value = 100.0
-show_percentage = false
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_hcu14")
-expand_mode = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
-value = 100.0
-show_percentage = false
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_iiglx")
-expand_mode = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
-value = 100.0
-show_percentage = false
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/Center/PanelContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_au5w6")
-expand_mode = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Center/PanelContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
-value = 100.0
-show_percentage = false
+enemy_scene = ExtResource("5_rem0d")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Center/PanelContainer"]
 layout_mode = 2

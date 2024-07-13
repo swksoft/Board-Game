@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://crkxed8hluw1o"]
+[gd_scene load_steps=2 format=3 uid="uid://crkxed8hluw1o"]
+
+[ext_resource type="Script" path="res://tests/test_encounter2/dice_manager.gd" id="1_6dlf4"]
 
 [node name="DiceManager" type="Node"]
+script = ExtResource("1_6dlf4")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2qg16u6t0ky7"]
+
+[ext_resource type="Script" path="res://tests/test_encounter2/ui/enemy_container.gd" id="1_axkuf"]
+
+[node name="EnemyContainer" type="HBoxContainer"]
+clip_contents = true
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_axkuf")
