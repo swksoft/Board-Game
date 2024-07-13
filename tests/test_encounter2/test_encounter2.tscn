@@ -17,6 +17,7 @@ combat_manager = NodePath("../CombatManager")
 
 [node name="CombatManager" parent="." instance=ExtResource("2_t14s4")]
 
+[connection signal="pressed" from="Ui/VBoxContainer/Bottom/Center/AttackButton" to="CombatManager" method="_on_attack_button_pressed"]
 [connection signal="update_information" from="CombatManager" to="Ui" method="_on_combat_manager_update_information"]
 
 [editable path="Ui"]
