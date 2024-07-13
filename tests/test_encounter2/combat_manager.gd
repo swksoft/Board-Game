@@ -2,6 +2,7 @@ extends Node
 class_name CombatManager
 
 signal turn_advanced()
+signal player_turn
 signal update_information(text: String)
 signal chars_ready
 signal update_turns(value: int)
@@ -46,6 +47,7 @@ func on_turn_advance():
 func create_character(character_name: String, hp: int, atk: int, dfs: int, eva: int, type: String, actions : Array, image: Vector2 = Vector2(0, 2560) ):
 	var character_data = {
 		"name": character_name,
+		"max_hp": hp,
 		"hp": hp,
 		"atk": atk,
 		"dfs": dfs,
@@ -69,6 +71,7 @@ func create_character(character_name: String, hp: int, atk: int, dfs: int, eva: 
 
 func _on_attack_button_button_down():
 	emit_signal("update_turns", turns)
+	player_turn.emit()
 	party_attack(characters, enemies)
 	party_attack(enemies, characters)
 	turn_advanced.emit()
@@ -79,4 +82,10 @@ func party_attack(party, opp):
 		var action =  character.actions[dice-1]
 		match action:
 			"attack": opp.pick_random().hp -= character.atk
+			"assassinate": 
+				var picked = opp.pick_random()
+				var chance = 100 - floor(picked.hp / picked.max_hp) * 100
+				var rng = RandomNumberGenerator.new()
+				var my_random_number = rng.randf_range(0, 100)
+				if my_random_number <= chance: picked.hp = 0
 		print(character.name + " used: " + action)
