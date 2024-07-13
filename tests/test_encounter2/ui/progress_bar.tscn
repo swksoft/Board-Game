@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfrmedskhhujn"]
+
+[ext_resource type="Script" path="res://tests/test_encounter2/ui/progress_bar.gd" id="1_coy2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n3h4"]
+bg_color = Color(0.274791, 0.0168059, 0.040561, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs444"]
+bg_color = Color(0.760958, 0, 0.22319, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(256, 32)
+theme_override_styles/background = SubResource("StyleBoxFlat_4n3h4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bs444")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_coy2o")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "HP: 25/25
+"

@@ -3,22 +3,17 @@ class_name CombatManager
 
 signal turn_advanced()
 signal update_information(text: String)
-signal characters_ready
-signal update_lifebar(value : int)
-signal update_turns(value: int)
+signal chars_ready
 
-@export var characters : Dictionary = {}
-@export var max_turns : int = 5
+var characters : Array = []
 
-var total_turns : int
+@export var dice_manager : DiceManager
 
 func _ready():
-	total_turns = max_turns
-	
-	#update_information.emit("Test.\n")
 	create_character("Hero", 100, 20, 10, 30)
 	create_character("Mage", 80, 25, 5, 25)
 	create_character("Warrior", 120, 15, 20, 1)
+	chars_ready.emit()
 	
 	emit_signal("characters_ready")
 	emit_signal("update_lifebar", get_total_health())
@@ -26,12 +21,14 @@ func _ready():
 	
 func create_character(character_name : String, hp : int, atk : int, dfs : int, eva : int):
 	var character_data = {
+		"name": character_name,
 		"hp": hp,
 		"atk": atk,
 		"dfs": dfs,
-		"eva": eva
+		"eva": eva,
+		"dice": 6
 	}
-	characters[character_name] = character_data
+	characters.push_back(character_data)
 	return character_data
 
 func get_total_health():
@@ -45,3 +42,8 @@ func _on_attack_button_pressed():
 	total_turns -= 1
 	emit_signal("update_turns", total_turns)
 	
+
+func _on_attack_button_button_down():
+	turn_advanced.emit()
+	for character in characters:
+		dice_manager.throw_dice(character.dice, character)

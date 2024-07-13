@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3sbwuiquigds"]
+
+[ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_cfjel"]
+[ext_resource type="Script" path="res://tests/test_encounter2/ui/dice.gd" id="2_lkik8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk5jg"]
+atlas = ExtResource("1_cfjel")
+region = Rect2(448, 896, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgp7f"]
+resource_local_to_scene = true
+atlas = ExtResource("1_cfjel")
+region = Rect2(1152, 1856, 32, 32)
+
+[node name="TextureRect" type="TextureRect" node_paths=PackedStringArray("number_rect")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_kk5jg")
+script = ExtResource("2_lkik8")
+number_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qgp7f")

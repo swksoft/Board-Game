@@ -17,14 +17,8 @@ func update_turns(value):
 		$VBoxContainer/Upper/HBoxContainer.add_child(texture_container, true, Node.INTERNAL_MODE_FRONT)
 
 func _ready():
-	#update_turns()
-	
-	combat_manager.characters_ready.connect(_on_combat_manager_characters_ready)
-	combat_manager.update_lifebar.connect(_on_update_lifebar)
-	combat_manager.update_turns.connect(_on_update_turns)
-	
-func update_information(info: String):
-	$VBoxContainer/Center/PanelContainer/RichTextLabel.append_text(info)
+	var characters = combat_manager.characters
+	#_on_combat_manager_update_information(characters)
 	
 func _on_combat_manager_update_information(text):
 	$VBoxContainer/Center/PanelContainer/RichTextLabel.append_text(text)
