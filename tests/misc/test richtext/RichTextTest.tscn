@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://wevrqefimaij"]
+[gd_scene load_steps=3 format=3 uid="uid://wevrqefimaij"]
+
+[ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_vtp0m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idokr"]
+atlas = ExtResource("1_vtp0m")
+region = Rect2(832, 1600, 32, 32)
 
 [node name="RichTextTest" type="CanvasLayer"]
 
@@ -25,8 +31,18 @@ text = "Chitloto
 [rainbow freq=1.0 sat=0.8 val=0.8]Chitloto[/rainbow]
 [tornado freq=1.0 sat=0.8 val=0.8]Chitloto[/tornado]
 [hint=Chitloto]Chitloto[/hint]
+
 [img=16x16]res://icon.svg[/img]
+
 [font_size=30]Chitloto[/font_size]
-[pulse][color=red]CHITLOTO[/color][/pulse]"
+[pulse][color=red]CHITLOTO[/color][/pulse]
+[img region=992,1280,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
 scroll_active = false
 scroll_following = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 452.0
+offset_top = 150.0
+offset_right = 492.0
+offset_bottom = 190.0
+texture = SubResource("AtlasTexture_idokr")

@@ -17,3 +17,6 @@ func init(coming_char):
 	
 func update():
 	print("Enemy hp: " + str(enemy.hp))
+	if enemy.hp <= 0:
+		print(str(enemy.name), " ha sido obliterado.")
+		modulate = Color("ffffff00")

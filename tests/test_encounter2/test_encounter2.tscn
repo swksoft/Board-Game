@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmvvhigk0kkf0" path="res://tests/test_encounter2/ui/UI.tscn" id="1_fcqut"]
 [ext_resource type="PackedScene" uid="uid://bfrvbk0tsfitk" path="res://tests/test_encounter2/combat_manager.tscn" id="2_t14s4"]
-[ext_resource type="PackedScene" path="res://tests/test_encounter2/ui/game_over_screen.tscn" id="2_tkucy"]
+[ext_resource type="PackedScene" uid="uid://cfrvndgnwmie8" path="res://tests/test_encounter2/ui/game_over_screen.tscn" id="2_tkucy"]
 [ext_resource type="PackedScene" uid="uid://crkxed8hluw1o" path="res://tests/test_encounter2/dice_manager.tscn" id="3_vat8h"]
 
 [node name="TestEncounter2" type="Control"]

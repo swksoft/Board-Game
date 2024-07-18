@@ -4,10 +4,9 @@ extends ProgressBar
 @export var label : Label
 
 func _ready():
-	combat_manager.chars_ready.connect(on_chars_ready)
+	combat_manager.update_lifebar.connect(on_update_lifebar)
 	
-func on_chars_ready():
-	var total_hp = 0
-	for char in combat_manager.characters:
-		total_hp += char.hp
-	label.text = str(total_hp)
+func on_update_lifebar():
+	max_value = combat_manager.player_total_hp
+	value = combat_manager.player_hp
+	label.text = "HP: " + str(combat_manager.player_hp) + "/" +str(combat_manager.player_total_hp)

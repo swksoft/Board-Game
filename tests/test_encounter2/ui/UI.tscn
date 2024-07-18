@@ -8285,11 +8285,9 @@ texture_region_size = Vector2i(32, 32)
 3:36/0 = 0
 4:36/0 = 0
 5:36/0 = 0
-6:36/0 = 0
 7:36/0 = 0
 8:36/0 = 0
 9:36/0 = 0
-10:36/0 = 0
 11:36/0 = 0
 12:36/0 = 0
 13:36/0 = 0
@@ -8350,12 +8348,8 @@ texture_region_size = Vector2i(32, 32)
 4:37/0 = 0
 5:37/0 = 0
 6:37/0 = 0
-7:37/0 = 0
 8:37/0 = 0
 9:37/0 = 0
-10:37/0 = 0
-11:37/0 = 0
-12:37/0 = 0
 13:37/0 = 0
 14:37/0 = 0
 15:37/0 = 0
@@ -8414,13 +8408,8 @@ texture_region_size = Vector2i(32, 32)
 4:38/0 = 0
 5:38/0 = 0
 6:38/0 = 0
-7:38/0 = 0
-8:38/0 = 0
-9:38/0 = 0
 10:38/0 = 0
-11:38/0 = 0
 12:38/0 = 0
-13:38/0 = 0
 14:38/0 = 0
 15:38/0 = 0
 16:38/0 = 0
@@ -8477,14 +8466,8 @@ texture_region_size = Vector2i(32, 32)
 3:39/0 = 0
 4:39/0 = 0
 5:39/0 = 0
-6:39/0 = 0
-7:39/0 = 0
-8:39/0 = 0
-9:39/0 = 0
 10:39/0 = 0
-11:39/0 = 0
 12:39/0 = 0
-13:39/0 = 0
 14:39/0 = 0
 15:39/0 = 0
 16:39/0 = 0
@@ -8545,9 +8528,6 @@ texture_region_size = Vector2i(32, 32)
 7:40/0 = 0
 8:40/0 = 0
 9:40/0 = 0
-10:40/0 = 0
-11:40/0 = 0
-12:40/0 = 0
 13:40/0 = 0
 14:40/0 = 0
 15:40/0 = 0
@@ -8611,7 +8591,6 @@ texture_region_size = Vector2i(32, 32)
 9:41/0 = 0
 10:41/0 = 0
 11:41/0 = 0
-12:41/0 = 0
 13:41/0 = 0
 14:41/0 = 0
 15:41/0 = 0
@@ -11947,6 +11926,7 @@ texture_region_size = Vector2i(32, 32)
 61:94/0 = 0
 62:94/0 = 0
 63:94/0 = 0
+15:34/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_k6bfp"]
 tile_size = Vector2i(32, 32)
@@ -12053,7 +12033,7 @@ layer_0/tile_data = PackedInt32Array(262144, 3211264, 4, 262145, 3211264, 4, 262
 layout_mode = 2
 enemy_scene = ExtResource("5_rem0d")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Center/PanelContainer"]
+[node name="BattleLog" type="RichTextLabel" parent="VBoxContainer/Center/PanelContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 12
@@ -12084,10 +12064,12 @@ text = "
 
 
 "
-scroll_active = false
 scroll_following = true
 shortcut_keys_enabled = false
 metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="VBoxContainer/Center/PanelContainer/BattleLog"]
+wait_time = 0.25
 
 [node name="Bottom" type="HBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("center")]
 layout_mode = 2
@@ -12130,3 +12112,5 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Bottom/Center"]
 layout_mode = 2
+
+[connection signal="timeout" from="VBoxContainer/Center/PanelContainer/BattleLog/Timer" to="." method="_on_timer_timeout"]
