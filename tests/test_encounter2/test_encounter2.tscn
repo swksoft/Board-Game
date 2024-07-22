@@ -24,6 +24,9 @@ upper_container = NodePath(".")
 [node name="EnemyContainer" parent="Ui/VBoxContainer/Center/PanelContainer" index="1" node_paths=PackedStringArray("combat_manager")]
 combat_manager = NodePath("../../../../../CombatManager")
 
+[node name="Timer" parent="Ui/VBoxContainer/Center/PanelContainer/BattleLog" index="1"]
+wait_time = 0.05
+
 [node name="Bottom" parent="Ui/VBoxContainer" index="2" node_paths=PackedStringArray("combat_manager")]
 combat_manager = NodePath("../../../CombatManager")
 

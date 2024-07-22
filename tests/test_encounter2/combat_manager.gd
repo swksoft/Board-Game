@@ -31,8 +31,8 @@ func _ready():
 	create_character("Warrior", 120, 15, 20, 1, "friend", ["attack", "attack", "standby", "attack", "attack", "guard"])
 	create_character("Ninja", 120, 15, 20, 1, "friend", ["standby", "attack", "attack", "standby", "attack", "assassinate"])
 	
-	create_character("Demon", 100, 10, 20, 1, "enemy", ["attack", "standby", "attack", "attack", "standby", "attack"])
-	create_character("George", 100, 10, 20, 1, "enemy", ["attack", "attack", "standby", "attack", "attack", "attack"])
+	create_character("Demon", 100, 100, 20, 1, "enemy", ["attack", "standby", "attack", "attack", "standby", "attack"])
+	create_character("George", 100, 100, 20, 1, "enemy", ["attack", "attack", "standby", "attack", "attack", "attack"])
 	
 	chars_ready.emit()
 	#emit_signal("characters_ready")
@@ -102,6 +102,19 @@ func _on_attack_button_button_down():
 	#enemy_attack(enemies, characters)
 	turn_advanced.emit()
 
+func take_damage(amount):
+	
+	player_hp -= amount
+	
+	if player_hp <= 0:
+		player_hp = 0
+		update_information.emit("Game Over")
+		$"../GameOverScreen".visible = true
+		get_tree().paused = true
+		
+	
+	emit_signal("update_lifebar")
+
 func party_attack(party, opp):
 	var enemy_icon : String
 	var icon : String
@@ -116,8 +129,9 @@ func party_attack(party, opp):
 		match action:
 			"attack":
 				if character.type == "enemy":
-					player_hp -= character.atk
-					emit_signal("update_lifebar")
+					take_damage(character.atk)
+					
+					
 				else: opp.pick_random().hp -= character.atk
 				
 				icon = "[img=16x16 region=960,1472,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"

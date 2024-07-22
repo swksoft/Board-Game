@@ -9,4 +9,5 @@ func _ready():
 func on_update_lifebar():
 	max_value = combat_manager.player_total_hp
 	value = combat_manager.player_hp
+	
 	label.text = "HP: " + str(combat_manager.player_hp) + "/" +str(combat_manager.player_total_hp)
