@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c10im7psg7hq5"
+
+[deps]
+
+files=["res://resources/data/characters.class.translation", "res://resources/data/characters.atk.translation", "res://resources/data/characters.eva.translation", "res://resources/data/characters.def.translation", "res://resources/data/characters.lck.translation", "res://resources/data/characters.tch.translation", "res://resources/data/characters.agl.translation", "res://resources/data/characters.bls.translation", "res://resources/data/characters.lck.translation", "res://resources/data/characters.cht.translation", "res://resources/data/characters.icon.translation"]
+
+source_file="res://resources/data/characters.csv"
+dest_files=["res://resources/data/characters.class.translation", "res://resources/data/characters.atk.translation", "res://resources/data/characters.eva.translation", "res://resources/data/characters.def.translation", "res://resources/data/characters.lck.translation", "res://resources/data/characters.tch.translation", "res://resources/data/characters.agl.translation", "res://resources/data/characters.bls.translation", "res://resources/data/characters.lck.translation", "res://resources/data/characters.cht.translation", "res://resources/data/characters.icon.translation"]
+
+[params]
+
+compress=true
+delimiter=0

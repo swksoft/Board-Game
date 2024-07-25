@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Board Game"
-run/main_scene="res://tests/test_encounter2/test_encounter2.tscn"
+run/main_scene="res://tests/chest section/main_chest.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

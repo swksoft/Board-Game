@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://8c3a7q5m4x5t"]
+
+[ext_resource type="Script" path="res://tests/drag and drop/test_scene.gd" id="1_5qhsl"]
+[ext_resource type="PackedScene" uid="uid://7u0nu4k8yyr3" path="res://tests/chest section/entities/character_chest.tscn" id="2_ica6h"]
+[ext_resource type="PackedScene" uid="uid://jpxub7r2x5j2" path="res://tests/chest section/ui/ui.tscn" id="3_hktrj"]
+[ext_resource type="PackedScene" uid="uid://c5eao3gywpviy" path="res://tests/chest section/entities/chest.tscn" id="3_ifuwk"]
+
+[node name="MainChest" type="Node2D"]
+metadata/_edit_vertical_guides_ = [48.0, 816.0]
+metadata/_edit_horizontal_guides_ = [48.0, 432.0]
+
+[node name="DragManager" type="Node2D" parent="."]
+script = ExtResource("1_5qhsl")
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="CharacterChest" parent="Characters" node_paths=PackedStringArray("drag_manager") instance=ExtResource("2_ica6h")]
+position = Vector2(176, 144)
+drag_manager = NodePath("../../DragManager")
+
+[node name="Chest" parent="." node_paths=PackedStringArray("drag_manager") instance=ExtResource("3_ifuwk")]
+position = Vector2(432, 240)
+difficulty = 50
+item_name = "Potion"
+fail_message = "Has fallado!"
+chest_closed_texture = null
+chest_open_texture = null
+drag_manager = NodePath("../DragManager")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Ui" parent="CanvasLayer" instance=ExtResource("3_hktrj")]
+show_behind_parent = true
+light_mask = 0
+metadata/_edit_lock_ = true

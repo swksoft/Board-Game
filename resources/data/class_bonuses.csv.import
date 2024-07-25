@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b7rk060pnw35u"
+
+[deps]
+
+files=["res://resources/data/class_bonuses.bonus.translation", "res://resources/data/class_bonuses.stat.translation", "res://resources/data/class_bonuses.value.translation"]
+
+source_file="res://resources/data/class_bonuses.csv"
+dest_files=["res://resources/data/class_bonuses.bonus.translation", "res://resources/data/class_bonuses.stat.translation", "res://resources/data/class_bonuses.value.translation"]
+
+[params]
+
+compress=true
+delimiter=0

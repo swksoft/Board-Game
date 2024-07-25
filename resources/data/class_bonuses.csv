@@ -1,0 +1,7 @@
+class_name,bonus_type,stat,value
+Warrior,percentage,atk,10
+Warrior,percentage,def,10
+Mage,flat,tch,5
+Mage,flat,agl,5
+Thief,percentage,eva,10
+Thief,percentage,lck,10

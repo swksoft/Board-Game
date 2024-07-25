@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5eao3gywpviy"]
+
+[ext_resource type="PackedScene" uid="uid://ba06xi2lb8v3r" path="res://tests/drag and drop/platform.tscn" id="1_c6wl1"]
+[ext_resource type="Script" path="res://tests/chest section/entities/chest.gd" id="2_1hbwl"]
+
+[node name="Chest" instance=ExtResource("1_c6wl1")]
+script = ExtResource("2_1hbwl")
+difficulty = 50
+item_name = "Potion"
+fail_message = "Has fallado!"
+chest_closed_texture = null
+chest_open_texture = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]

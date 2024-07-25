@@ -1,0 +1,4 @@
+name,description,function,type,icon
+Potion,Heals 50 HP,heal_50,active,res://icons/potion.png
+Ether,Restores 30 MP,restore_30_mp,active,res://icons/ether.png
+Lucky Charm,Increases luck by 5%,increase_luck,passive,res://icons/lucky_charm.png
