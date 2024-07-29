@@ -1,4 +1,4 @@
-class_name StatChest extends Node
+class_name StatCharacterChest extends Node
 
 signal icon_ready
 

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://8c3a7q5m4x5t"]
+[gd_scene load_steps=6 format=3 uid="uid://8c3a7q5m4x5t"]
 
 [ext_resource type="Script" path="res://tests/drag and drop/test_scene.gd" id="1_5qhsl"]
 [ext_resource type="PackedScene" uid="uid://cuq0sbg1eongd" path="res://tests/chest section/chest_manager.tscn" id="1_mp755"]
-[ext_resource type="PackedScene" uid="uid://7u0nu4k8yyr3" path="res://tests/chest section/entities/character_chest.tscn" id="2_ica6h"]
 [ext_resource type="PackedScene" uid="uid://cw6mtoqdd5ut7" path="res://tests/chest section/character_placement.tscn" id="3_5gpgh"]
 [ext_resource type="PackedScene" uid="uid://jpxub7r2x5j2" path="res://tests/chest section/ui/ui.tscn" id="3_hktrj"]
 [ext_resource type="PackedScene" uid="uid://c5eao3gywpviy" path="res://tests/chest section/entities/chest.tscn" id="3_ifuwk"]
@@ -16,43 +15,12 @@ metadata/_edit_horizontal_guides_ = [48.0, 432.0]
 [node name="DragManager" type="Node2D" parent="."]
 script = ExtResource("1_5qhsl")
 
-[node name="CharacterPlacement" parent="." node_paths=PackedStringArray("chest_manager") instance=ExtResource("3_5gpgh")]
-chest_manager = NodePath("../ChestManager")
-
-[node name="Characters" type="Node" parent="."]
-
-[node name="CharacterChest" parent="Characters" node_paths=PackedStringArray("drag_manager") instance=ExtResource("2_ica6h")]
-visible = false
-position = Vector2(112, 112)
-drag_manager = NodePath("../../DragManager")
-
-[node name="Stats" parent="Characters/CharacterChest" index="0"]
-character_name = "Hero"
-
-[node name="CharacterChest2" parent="Characters" node_paths=PackedStringArray("drag_manager") instance=ExtResource("2_ica6h")]
-visible = false
-position = Vector2(112, 368)
-drag_manager = NodePath("../../DragManager")
-
-[node name="Stats" parent="Characters/CharacterChest2" index="0"]
-character_name = "Mage"
-
-[node name="CharacterChest3" parent="Characters" node_paths=PackedStringArray("drag_manager") instance=ExtResource("2_ica6h")]
-visible = false
-position = Vector2(752, 368)
-drag_manager = NodePath("../../DragManager")
-
-[node name="Stats" parent="Characters/CharacterChest3" index="0"]
-character_name = "Thief"
-
-[node name="CharacterChest4" parent="Characters" node_paths=PackedStringArray("drag_manager") instance=ExtResource("2_ica6h")]
-visible = false
-position = Vector2(752, 112)
-drag_manager = NodePath("../../DragManager")
-
 [node name="Chest" parent="." node_paths=PackedStringArray("drag_manager") instance=ExtResource("3_ifuwk")]
 position = Vector2(432, 240)
 drag_manager = NodePath("../DragManager")
+
+[node name="CharacterPlacement" parent="." node_paths=PackedStringArray("chest_manager") instance=ExtResource("3_5gpgh")]
+chest_manager = NodePath("../ChestManager")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -63,9 +31,6 @@ light_mask = 0
 metadata/_edit_lock_ = true
 
 [connection signal="load_data" from="ChestManager" to="CharacterPlacement" method="_on_chest_manager_load_data"]
+[connection signal="open_chest" from="ChestManager" to="Chest" method="_on_chest_manager_open_chest"]
 
-[editable path="Characters/CharacterChest"]
-[editable path="Characters/CharacterChest2"]
-[editable path="Characters/CharacterChest3"]
-[editable path="Characters/CharacterChest4"]
 [editable path="Chest"]

@@ -12,6 +12,8 @@ func interact():
 	print("hola")
 
 func _process(delta):
+	# TODO: QUE NO SEA CLICKEABLE AL SOLTAR CLICK A MENOS QUE REGRESE A SU POSICION ORIGINAL (clickear el icono muchas veces lo bugea)
+	
 	if dragable:
 		if Input.is_action_just_pressed("click"):
 			initialPos = global_position
@@ -32,7 +34,6 @@ func _process(delta):
 				
 			else:
 				# RETORNA A SU POSICION OG
-				print("a")
 				tween.tween_property(self, "global_position", initialPos, 0.2). set_ease(Tween.EASE_OUT)
 			
 func _on_area_2d_mouse_entered():

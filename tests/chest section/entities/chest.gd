@@ -1,7 +1,5 @@
 class_name Chest extends placeable
 
-@export var difficulty: int = 50
-@export var item_name: String = "Potion"
 @export var fail_message: String = "Has fallado!"
 @export var chest_closed_texture: Texture
 @export var chest_open_texture: Texture
@@ -17,13 +15,15 @@ var characters = []
 var dic_ejemplo = {} # BORRAR
 
 func _ready():
+	EventsTest.open_chest.connect(_on_open_chest)
+	
 	#character = get_tree().get_first_node_in_group("CharacterChest")
 	#character.open_chest.connect(on_open_chest)
 	#sprite = $Sprite
 	#sprite.texture = chest_closed_texture
 	
-	items = load_csv("res://resources/data/items.csv")
-	print("Loaded items: ", items)
+	#items = load_csv("res://resources/data/items.csv")
+	#print("Loaded items: ", items)
 	
 	#characters = load_csv("res://resources/data/characters.csv")
 	#print("Loaded characters: ", characters)
@@ -50,40 +50,44 @@ func _ready():
 	#else:
 		#display_message(fail_message)
 
-func display_message(msg: String):
-	print(msg)
+#func display_message(msg: String):
+	#print(msg)
+#
+#
+#func load_csv(file_path: String) -> Array:
+	#var file = FileAccess.open(file_path, FileAccess.READ)
+	#var data = []
+#
+	#if file.file_exists(file_path):
+		#file.open(file_path, FileAccess.READ)
+		#
+		#var headers = file.get_csv_line()
+		#
+		#while not file.eof_reached():
+			#var line = file.get_csv_line()
+			#
+			#if line.size() == headers.size():
+				#var dict = {}
+				#
+				#for i in range(len(headers)):
+					#dict[headers[i]] = line[i]
+				#
+				#data.append(dict)
+			#else:
+				#pass
+		#file.close()
+		#
+	#return data
+#
+#func find_character(name: String) -> Dictionary:
+	#for character in characters:
+		#if character["name"] == name:
+			#return character
+	#return {}
+#
+#func on_open_chest(data):
+	#print("hola: ", data)
 
 
-func load_csv(file_path: String) -> Array:
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	var data = []
-
-	if file.file_exists(file_path):
-		file.open(file_path, FileAccess.READ)
-		
-		var headers = file.get_csv_line()
-		
-		while not file.eof_reached():
-			var line = file.get_csv_line()
-			
-			if line.size() == headers.size():
-				var dict = {}
-				
-				for i in range(len(headers)):
-					dict[headers[i]] = line[i]
-				
-				data.append(dict)
-			else:
-				pass
-		file.close()
-		
-	return data
-
-func find_character(name: String) -> Dictionary:
-	for character in characters:
-		if character["name"] == name:
-			return character
-	return {}
-
-func on_open_chest(data):
-	print("hola: ", data)
+func _on_open_chest(char_stats):
+	print(char_stats["name"], " abrirá el cofre.")

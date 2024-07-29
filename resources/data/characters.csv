@@ -1,4 +1,4 @@
 name,class,atk,eva,def,lck_board,tch,agl,bls,lck_interact,cht,icon,max_hp,type,dice,actions
-Hero,Warrior,10,15,20,5,10,8,2,3,7,res://tests/chest section/entities/assets/hero.png,14,friend,6,"attack,attack,standby,attack,attack,guard"
-Mage,Mage,8,12,15,10,12,10,3,4,6,res://tests/chest section/entities/assets/mage.png,18,friend,6,"standby,attack,attack,standby,attack,assassinate"
-Thief,Thief,5,20,10,15,8,12,1,2,6,res://tests/chest section/entities/assets/thief.png,17,enemy,6,"attack,standby,attack,attack,standby,attack"
+Richard,Warrior,10,15,20,5,10,8,2,3,7,res://tests/chest section/entities/assets/hero.png,14,friend,6,"attack,attack,standby,attack,attack,guard"
+John,Mage,8,12,15,10,12,10,3,4,6,res://tests/chest section/entities/assets/mage.png,18,friend,6,"standby,attack,attack,standby,attack,assassinate"
+Duende Verde,Thief,5,20,10,15,8,12,1,2,6,res://tests/chest section/entities/assets/thief.png,17,enemy,6,"attack,standby,attack,attack,standby,attack"

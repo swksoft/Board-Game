@@ -1,20 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5eao3gywpviy"]
+[gd_scene load_steps=5 format=3 uid="uid://c5eao3gywpviy"]
 
 [ext_resource type="PackedScene" uid="uid://ba06xi2lb8v3r" path="res://tests/drag and drop/platform.tscn" id="1_c6wl1"]
 [ext_resource type="Script" path="res://tests/chest section/entities/chest.gd" id="2_1hbwl"]
+[ext_resource type="PackedScene" uid="uid://drtggk4r4d0jp" path="res://tests/chest section/entities/stats_chest.tscn" id="3_3h0rn"]
 [ext_resource type="Texture2D" uid="uid://cyxv5pheb442b" path="res://tests/chest section/entities/assets/chest_2_closed.png" id="3_s3csf"]
 
 [node name="Chest" instance=ExtResource("1_c6wl1")]
 script = ExtResource("2_1hbwl")
-difficulty = 50
-item_name = "Potion"
 fail_message = "Has fallado!"
 chest_closed_texture = null
 chest_open_texture = null
 
-[node name="ColorRect" parent="." index="1"]
+[node name="StatsChest" parent="." index="0" instance=ExtResource("3_3h0rn")]
+
+[node name="ColorRect" parent="." index="2"]
 color = Color(1, 1, 1, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
 scale = Vector2(4, 4)
 texture = ExtResource("3_s3csf")

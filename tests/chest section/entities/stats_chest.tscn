@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drtggk4r4d0jp"]
+
+[ext_resource type="Script" path="res://tests/chest section/entities/stats_chest.gd" id="1_vrbw2"]
+
+[node name="StatsChest" type="Node"]
+script = ExtResource("1_vrbw2")

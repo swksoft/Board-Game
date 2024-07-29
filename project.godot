@@ -15,6 +15,10 @@ run/main_scene="res://tests/chest section/main_chest.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventsTest="*res://tests/events_test.gd"
+
 [display]
 
 window/size/viewport_width=854
