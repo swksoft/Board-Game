@@ -8,6 +8,9 @@ var body_ref
 var offset : Vector2
 var initialPos : Vector2
 
+func interact():
+	print("hola")
+
 func _process(delta):
 	if dragable:
 		if Input.is_action_just_pressed("click"):
@@ -24,10 +27,14 @@ func _process(delta):
 			
 			if is_inside_dropable:
 				tween.tween_property(self, "position", body_ref.position, 0.2). set_ease(Tween.EASE_OUT)
+				interact()
+				# TODO: DISPLAY DE SKILLS
+				
 			else:
+				# RETORNA A SU POSICION OG
+				print("a")
 				tween.tween_property(self, "global_position", initialPos, 0.2). set_ease(Tween.EASE_OUT)
 			
-
 func _on_area_2d_mouse_entered():
 	if not drag_manager.is_dragging:
 		dragable = true

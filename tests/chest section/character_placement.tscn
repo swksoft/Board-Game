@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw6mtoqdd5ut7"]
+
+[ext_resource type="Script" path="res://tests/chest section/character_placement.gd" id="1_ui2aj"]
+[ext_resource type="PackedScene" uid="uid://7u0nu4k8yyr3" path="res://tests/chest section/entities/character_chest.tscn" id="2_060bb"]
+
+[node name="CharacterPlacement" type="Node2D"]
+script = ExtResource("1_ui2aj")
+character_scene = ExtResource("2_060bb")
+
+[node name="Point1" type="Marker2D" parent="."]
+position = Vector2(112, 112)
+
+[node name="Point2" type="Marker2D" parent="."]
+position = Vector2(752, 112)
+
+[node name="Point3" type="Marker2D" parent="."]
+position = Vector2(112, 368)
+
+[node name="Point4" type="Marker2D" parent="."]
+position = Vector2(752, 368)

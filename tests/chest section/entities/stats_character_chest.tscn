@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk0kl2w8o5qxc"]
+
+[ext_resource type="Script" path="res://tests/chest section/entities/stats_character_chest.gd" id="1_wdt01"]
+
+[node name="Stats" type="Node"]
+script = ExtResource("1_wdt01")

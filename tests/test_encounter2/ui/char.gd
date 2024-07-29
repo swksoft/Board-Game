@@ -6,6 +6,7 @@ extends PanelContainer
 @export var dfs_label : Label
 @export var eva_label : Label
 @export var rect : TextureRect
+
 var combat_manager : CombatManager
 
 var char

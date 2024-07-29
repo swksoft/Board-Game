@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://7u0nu4k8yyr3"]
+[gd_scene load_steps=4 format=3 uid="uid://7u0nu4k8yyr3"]
 
 [ext_resource type="PackedScene" uid="uid://23j7p85mn0td" path="res://tests/drag and drop/placeable_entity.tscn" id="1_xnmnh"]
 [ext_resource type="Script" path="res://tests/chest section/entities/character_chest.gd" id="2_mjqaj"]
+[ext_resource type="PackedScene" uid="uid://bk0kl2w8o5qxc" path="res://tests/chest section/entities/stats_character_chest.tscn" id="3_movnd"]
 
 [node name="CharacterChest" instance=ExtResource("1_xnmnh")]
 script = ExtResource("2_mjqaj")
+
+[node name="Stats" parent="." index="0" instance=ExtResource("3_movnd")]
+
+[connection signal="icon_ready" from="Stats" to="." method="_on_stats_icon_ready"]
