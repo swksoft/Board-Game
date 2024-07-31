@@ -1,15 +1,18 @@
 class_name Chest extends placeable
 
+signal show_options(char_stats)
+
+@export var chest_stats : StatChest
 @export var fail_message: String = "Has fallado!"
 @export var chest_closed_texture: Texture
 @export var chest_open_texture: Texture
 
 var sprite: Sprite2D
 
-var character = Character_Treasure
+#var character = Character_Treasure
 
 # Inventario del jugador
-var player_inventory = ["llave"]
+var player_inventory = ["shit"]#["key"] # INVENTARIO NO DEBERIA ESTAR AQUI
 var items = []
 var characters = []
 var dic_ejemplo = {} # BORRAR
@@ -17,73 +20,48 @@ var dic_ejemplo = {} # BORRAR
 func _ready():
 	EventsTest.open_chest.connect(_on_open_chest)
 	
-	#character = get_tree().get_first_node_in_group("CharacterChest")
-	#character.open_chest.connect(on_open_chest)
-	#sprite = $Sprite
-	#sprite.texture = chest_closed_texture
+	sprite = $Sprite2D
+	sprite.texture = chest_closed_texture
 	
-	#items = load_csv("res://resources/data/items.csv")
-	#print("Loaded items: ", items)
-	
-	#characters = load_csv("res://resources/data/characters.csv")
-	#print("Loaded characters: ", characters)
+	items = EventsTest.load_csv("res://resources/data/items.csv")
+	characters = EventsTest.load_csv("res://resources/data/characters.csv")
 
-#func open_chest(character_name: String):
+func open_chest(character_name: String):
 	## Buscar al personaje por nombre
-	#var character_data = find_character(character_name)
-	#
-	#if character_data == null:
+	var character_data = find_character(character_name)
+	
+	if character_data == null:
 		#display_message("Personaje no encontrado")
-		#return
+		print("Personaje no encontrado")
+		return
 #
 	## Verificar si el jugador tiene una llave
-	#if "key" in player_inventory:
-		#display_message("Has abierto el cofre con la llave y has obtenido: " + item_name)
+	if "key" in player_inventory:
+		print("Has abierto el cofre con la llave y has obtenido: " , chest_stats.item_name)#display_message("Has abierto el cofre con la llave y has obtenido: " + item_name)
 		#sprite.texture = chest_open_texture
-		#return
+		return
 #
 	## Calcular probabilidad de éxito basado en las estadísticas del personaje
-	#var chance = (character_data["agl"].to_int() + character_data["tch"].to_int() + character_data["lck_board"].to_int()) / 3
-	#if chance >= difficulty:
-		#display_message("Has abierto el cofre y has obtenido: " + item_name)
-		#sprite.texture = chest_open_texture
-	#else:
-		#display_message(fail_message)
+	var chance = (character_data["lck_board"].to_int() + character_data["tch"].to_int() / 3 )
+	print(chance)
+	if chance >= chest_stats.difficulty:
+		print("Has abierto el cofre y has obtenido: " , chest_stats.item_name)
+		sprite.texture = chest_open_texture
+	else:
+		print(fail_message)
 
 #func display_message(msg: String):
 	#print(msg)
 #
 #
-#func load_csv(file_path: String) -> Array:
-	#var file = FileAccess.open(file_path, FileAccess.READ)
-	#var data = []
-#
-	#if file.file_exists(file_path):
-		#file.open(file_path, FileAccess.READ)
-		#
-		#var headers = file.get_csv_line()
-		#
-		#while not file.eof_reached():
-			#var line = file.get_csv_line()
-			#
-			#if line.size() == headers.size():
-				#var dict = {}
-				#
-				#for i in range(len(headers)):
-					#dict[headers[i]] = line[i]
-				#
-				#data.append(dict)
-			#else:
-				#pass
-		#file.close()
-		#
-	#return data
-#
-#func find_character(name: String) -> Dictionary:
-	#for character in characters:
-		#if character["name"] == name:
-			#return character
-	#return {}
+
+
+func find_character(name: String) -> Dictionary:
+	for character in characters:
+		if character["name"] == name:
+			print_debug(character)
+			return character
+	return {}
 #
 #func on_open_chest(data):
 	#print("hola: ", data)
@@ -91,3 +69,5 @@ func _ready():
 
 func _on_open_chest(char_stats):
 	print(char_stats["name"], " abrirá el cofre.")
+	#open_chest(char_stats["name"])
+	emit_signal("show_options", char_stats)
