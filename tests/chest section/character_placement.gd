@@ -14,6 +14,7 @@ func _on_chest_manager_load_data():
 			#get_node(location).add_child(instance)
 			
 			instance.position = get_node(location).global_position
+			instance.initialPos = instance.position
 			add_child(instance)
 			#instance.load_stats(chest_manager.characters[current_point-1])
 			instance.get_child(0).assign_data(chest_manager.characters[current_point-1])

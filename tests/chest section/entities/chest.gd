@@ -16,9 +16,11 @@ var player_inventory = ["shit"]#["key"] # INVENTARIO NO DEBERIA ESTAR AQUI
 var items = []
 var characters = []
 var dic_ejemplo = {} # BORRAR
+var opening = false
 
 func _ready():
 	EventsTest.open_chest.connect(_on_open_chest)
+	EventsTest.cancel_open_chest.connect(_on_chest_left)
 	
 	sprite = $Sprite2D
 	sprite.texture = chest_closed_texture
@@ -68,6 +70,11 @@ func find_character(name: String) -> Dictionary:
 
 
 func _on_open_chest(char_stats):
+	opening = true
 	print(char_stats["name"], " abrirá el cofre.")
 	#open_chest(char_stats["name"])
 	emit_signal("show_options", char_stats)
+	EventsTest.emit_chest_entered()
+
+func _on_chest_left():
+	opening = false

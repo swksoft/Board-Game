@@ -3,9 +3,17 @@ extends Node
 
 # SIGNALS CHEST SECTION
 signal open_chest(char_stats)
+signal cancel_open_chest
+signal chest_entered
 
 func emit_open_chest(char_stats):
 	emit_signal("open_chest", char_stats)
+	
+func emit_cancel_open_chest():
+	cancel_open_chest.emit()
+	
+func emit_chest_entered():
+	chest_entered.emit()
 
 func load_csv(file_path: String) -> Array:
 	var file = FileAccess.open(file_path, FileAccess.READ)
