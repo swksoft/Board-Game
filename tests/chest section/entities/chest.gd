@@ -12,7 +12,7 @@ var sprite: Sprite2D
 #var character = Character_Treasure
 
 # Inventario del jugador
-var player_inventory = ["shit"]#["key"] # INVENTARIO NO DEBERIA ESTAR AQUI
+var player_inventory = ["shit"]
 var items = []
 var characters = []
 var dic_ejemplo = {} # BORRAR
@@ -50,24 +50,13 @@ func open_chest(character_name: String):
 	else:
 		print(fail_message)
 
-#func display_message(msg: String):
-	#print(msg)
-#
-#
-
-
 func find_character(name: String) -> Dictionary:
 	for character in characters:
 		if character["name"] == name:
 			print_debug(character)
 			return character
 	return {}
-#
-#func on_open_chest(data):
-	#print("hola: ", data)
-
-
+	
 func _on_open_chest(char_stats):
 	print(char_stats["name"], " abrirá el cofre.")
-	#open_chest(char_stats["name"])
 	emit_signal("show_options", char_stats)

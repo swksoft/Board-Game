@@ -10,13 +10,14 @@ func _ready():
 	button.pressed.connect(self._button_pressed)
 	button_container.add_child(button)
 	
+	# Botón abrir cofre skill (tch)
 	if skill == "ganzua":
 		var skill_button = Button.new()
 		skill_button.text = "Ganzúa"
 		skill_button.pressed.connect(self._use_skill)
 		button_container.add_child(skill_button)
 		
-	# Botón para intentar abrir el cofre
+	# Botón intentar abrir el cofre (board_lck)
 	var open_button = Button.new()
 	open_button.text = "Intentar abrir"
 	open_button.pressed.connect(self._try_open_chest)
