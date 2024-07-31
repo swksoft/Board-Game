@@ -11,6 +11,8 @@ signal update_lifebar
 @export var dice_manager : DiceManager
 @export var max_turns := 6
 
+@export var time = 1
+
 var turns
 var characters : Array = []
 var enemies : Array = []
@@ -120,6 +122,7 @@ func party_attack(party, opp):
 	var icon : String
 	
 	for character in party:
+		await get_tree().create_timer(time).timeout
 		var dice = dice_manager.throw_dice(character.dice, character)
 		var action =  character.actions[dice-1]
 		
@@ -150,8 +153,6 @@ func party_attack(party, opp):
 				icon = "[img=16x16 region=1088,1184,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
 			"_":
 				icon = "[img=16x16 region=480,1632,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-		
 		var message = enemy_icon + character.name + " rolled: " + action + " " + icon
-		
 		update_information.emit(message)
 		
