@@ -3,28 +3,28 @@ extends Control
 @onready var button_message = $CenterContainer/ButtonContainer/V/ButtonMessage
 @onready var button_container = $CenterContainer/ButtonContainer/V
 
-func character_entered(char_data):
-	pass
-
 func _use_skill():
 	# Lógica para abrir el cofre con la habilidad "Ganzúa"
 	print("Usando habilidad Ganzúa para abrir el cofre.")
+	button_container.visible = false
+	get_tree().paused = false
 
 func _try_open_chest():
 	# Lógica para intentar abrir el cofre
 	print("Intentando abrir el cofre.")
+	button_container.visible = false
+	get_tree().paused = false
 
 func _cancel():
 	# Lógica para cancelar la acción
 	print("Acción cancelada.")
 	button_container.visible = false
 	EventsTest.emit_cancel_open_chest()
-
-
-
+	get_tree().paused = false
 
 func _on_chest_show_options(char_stats):
-	print("a")
+	get_tree().paused = true
+	
 	# Limpiar botones anteriores si existen
 	for child in button_container.get_children():
 		if child.name != "ButtonMessage":
