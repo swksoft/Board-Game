@@ -73,6 +73,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u752e")
 layout_mode = 2
 
 [node name="ButtonMessage" type="Label" parent="CenterContainer/ButtonContainer/V"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = " ¿Cómo [nombre] abrirá el cofre?"
