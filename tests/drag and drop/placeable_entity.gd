@@ -7,16 +7,16 @@ var is_inside_dropable = false
 var body_ref
 var offset : Vector2
 var initialPos : Vector2
+var returning = false
 
 func interact():
 	print("hola")
 
 func _process(delta):
 	# TODO: QUE NO SEA CLICKEABLE AL SOLTAR CLICK A MENOS QUE REGRESE A SU POSICION ORIGINAL (clickear el icono muchas veces lo bugea)
-	
+	if returning: return
 	if dragable:
 		if Input.is_action_just_pressed("click"):
-			initialPos = global_position
 			offset = get_global_mouse_position() - global_position
 			drag_manager.is_dragging = true
 		
@@ -25,17 +25,26 @@ func _process(delta):
 		elif Input.is_action_just_released("click"):
 			drag_manager.is_dragging = false
 			
-			var tween = get_tree().create_tween()
-			
 			if is_inside_dropable:
+				var tween = get_tree().create_tween()
 				tween.tween_property(self, "position", body_ref.position, 0.2). set_ease(Tween.EASE_OUT)
+				unscale()
 				interact()
 				# TODO: DISPLAY DE SKILLS
 				
 			else:
-				# RETORNA A SU POSICION OG
-				tween.tween_property(self, "global_position", initialPos, 0.2). set_ease(Tween.EASE_OUT)
+				return_to_original_pos()
 			
+func return_to_original_pos():
+	returning = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", initialPos, 0.2). set_ease(Tween.EASE_OUT)
+	tween.finished.connect(on_return)
+
+func unscale():
+	dragable = false
+	scale = Vector2(1, 1)
+
 func _on_area_2d_mouse_entered():
 	if not drag_manager.is_dragging:
 		dragable = true
@@ -43,8 +52,7 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	if not drag_manager.is_dragging:
-		dragable = false
-		scale = Vector2(1, 1)
+		unscale()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("dropable"):
@@ -56,3 +64,6 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("dropable"):
 		is_inside_dropable = false
 		#body.modulate = Color(Color.MEDIUM_PURPLE, 1)
+		
+func on_return():
+	returning = false

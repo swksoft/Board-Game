@@ -19,6 +19,7 @@ func _cancel():
 	# Lógica para cancelar la acción
 	print("Acción cancelada.")
 	button_container.visible = false
+	EventsTest.emit_cancel_open_chest()
 	get_tree().paused = false
 
 func _on_chest_show_options(char_stats):

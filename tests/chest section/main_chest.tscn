@@ -45,6 +45,9 @@ script = ExtResource("1_5qhsl")
 position = Vector2(432, 240)
 drag_manager = NodePath("../DragManager")
 
+[node name="ColorRect" parent="Chest" index="2"]
+metadata/_edit_use_anchors_ = true
+
 [node name="CharacterPlacement" parent="." node_paths=PackedStringArray("chest_manager") instance=ExtResource("3_5gpgh")]
 chest_manager = NodePath("../ChestManager")
 
