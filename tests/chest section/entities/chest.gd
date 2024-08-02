@@ -25,8 +25,8 @@ func _ready():
 	sprite = $Sprite2D
 	sprite.texture = chest_closed_texture
 	
-	items = EventsTest.load_csv("res://resources/data/items.csv")
-	characters = EventsTest.load_csv("res://resources/data/characters.csv")
+	#items = EventsTest.load_csv("res://resources/data/items.csv")
+	#characters = EventsTest.load_csv("res://resources/data/characters.csv")
 
 func open_chest(character_name: String):
 	## Buscar al personaje por nombre

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventsTest="*res://tests/events_test.gd"
+GlobalDataTest="*res://tests/global_data_test.gd"
 
 [display]
 

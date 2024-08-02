@@ -4,10 +4,10 @@ extends Control
 @onready var button_container = $CenterContainer/ButtonContainer/V
 
 func _use_skill():
-	# Lógica para abrir el cofre con la habilidad "Ganzúa"
 	print("Usando habilidad Ganzúa para abrir el cofre.")
-	button_container.visible = false
 	get_tree().paused = false
+	button_container.visible = false
+	print(get_tree().paused)
 
 func _try_open_chest():
 	# Lógica para intentar abrir el cofre

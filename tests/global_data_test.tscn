@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ot3yv6dp7wq"]
+
+[ext_resource type="Script" path="res://tests/global_data_test.gd" id="1_lgnll"]
+
+[node name="GlobalDataTest" type="Node"]
+script = ExtResource("1_lgnll")
