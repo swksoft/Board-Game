@@ -6,10 +6,10 @@ uid="uid://ofxtcbk4l7fs"
 
 [deps]
 
-files=["res://resources/data/enemies.atk.translation", "res://resources/data/enemies.eva.translation", "res://resources/data/enemies.def.translation", "res://resources/data/enemies.bls.translation", "res://resources/data/enemies.lck.translation", "res://resources/data/enemies.cht.translation", "res://resources/data/enemies.icon.translation"]
+files=["res://resources/data/enemies.atk.translation", "res://resources/data/enemies.eva.translation", "res://resources/data/enemies.def.translation", "res://resources/data/enemies.bls.translation", "res://resources/data/enemies.lck.translation", "res://resources/data/enemies.cht.translation", "res://resources/data/enemies.icon.translation", "res://resources/data/enemies.max.translation", "res://resources/data/enemies.type.translation", "res://resources/data/enemies.dice.translation", "res://resources/data/enemies.actions.translation"]
 
 source_file="res://resources/data/enemies.csv"
-dest_files=["res://resources/data/enemies.atk.translation", "res://resources/data/enemies.eva.translation", "res://resources/data/enemies.def.translation", "res://resources/data/enemies.bls.translation", "res://resources/data/enemies.lck.translation", "res://resources/data/enemies.cht.translation", "res://resources/data/enemies.icon.translation"]
+dest_files=["res://resources/data/enemies.atk.translation", "res://resources/data/enemies.eva.translation", "res://resources/data/enemies.def.translation", "res://resources/data/enemies.bls.translation", "res://resources/data/enemies.lck.translation", "res://resources/data/enemies.cht.translation", "res://resources/data/enemies.icon.translation", "res://resources/data/enemies.max.translation", "res://resources/data/enemies.type.translation", "res://resources/data/enemies.dice.translation", "res://resources/data/enemies.actions.translation"]
 
 [params]
 

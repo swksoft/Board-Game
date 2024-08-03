@@ -34,14 +34,11 @@ func load_csv(file_path: String) -> Array:
 		
 	return data
 
-# Función para cargar personajes desde el archivo .csv
 func load_characters(file_path: String):
 	var data = load_csv(file_path)
-	#for i in range(1, data.size()):
 	for i in range(data.size()):
 		var char_data = data[i]
 		
-		#all_characters[char_data[0]] = {
 		all_characters[i] = {
 			"name": char_data["name"],
 			"class": char_data["class"],
@@ -58,10 +55,9 @@ func load_characters(file_path: String):
 			"max_hp": char_data["max_hp"].to_int(),
 			"type": char_data["type"],
 			"dice": char_data["dice"].to_int(),
-			"actions": char_data["actions"].split(",") # Convierte las acciones en un array de strings
+			"actions": char_data["actions"].split(",")
 		}
 
-# Función para cargar enemigos desde el archivo .csv
 func load_enemies(file_path: String):
 	var data = load_csv(file_path)
 	for i in range(data.size()):
@@ -75,17 +71,16 @@ func load_enemies(file_path: String):
 			"lck_interact": enemy_data["lck_interact"].to_int(),
 			"cht": enemy_data["cht"].to_int(),
 			"icon": enemy_data["icon"],
-			"max_hp": 100, # default value
-			"type": "enemy", # default value
-			"dice": 6, # default value
-			"actions": [] # default empty array
+			"max_hp": enemy_data["max_hp"].to_int(), 
+			"type": enemy_data["type"], 
+			"dice": enemy_data["dice"].to_int(),
+			"actions": enemy_data["actions"].split(",")
 		}
 
-# Función para cargar items desde el archivo .csv
 func load_items(file_path: String):
 	var data = load_csv(file_path)
 	
-	for i in range(1, data.size()):
+	for i in range(data.size()):
 		var item_data = data[i]
 		all_items[i] = {
 			"name": item_data["name"],
@@ -95,17 +90,17 @@ func load_items(file_path: String):
 			"icon": item_data["icon"]
 		}
 
-# Función para restablecer datos disponibles a su estado inicial
 func reset_available_data():
 	available_characters.clear()
 	available_items_ids.clear()
 	
-	# Agregar los primeros 3 personajes a los disponibles
-	var data = load_csv("res://resources/data/characters.csv")
-	for i in range(min(3, data.size())):
+	var data_char = load_csv("res://resources/data/characters.csv")
+	for i in range(min(3, data_char.size())):
 		available_characters.append(all_characters[i])
+	var data_items = load_csv("res://resources/data/characters.csv")
+	for i in range(min(3, data_items.size())):
+		available_items_ids.append(all_items[i])
 
-# Función para inicializar la carga de todos los datos
 func load_all_data():
 	load_characters("res://resources/data/characters.csv")
 	load_enemies("res://resources/data/enemies.csv")
@@ -117,8 +112,6 @@ func _ready():
 	print_available_data()
 
 func print_available_data():
-	print(all_characters[0])
-	print(all_enemies)
-	print(all_items)
 	print_rich("[font_size=16][pulse][color=red]Available Characters:[/color][/pulse][/font_size] ", available_characters)
 	print_rich("[font_size=16][pulse][color=red]Available Items:[/color][/pulse][/font_size] ", available_items_ids)
+	print_rich("[font_size=16][pulse][color=red]ALL ENEMIES:[/color][/pulse][/font_size] ", all_enemies)
