@@ -7,11 +7,10 @@ var character_data = {}
 
 func set_character_data(data):
 	character_data = data
-	print_debug(character_data)
+	movement = character_data["agl"]
 	update_icon()
 
 func update_icon():
 	var icon_path = character_data["icon"]
-	print_debug(icon_path)
 	
 	sprite_node.texture = load(icon_path)

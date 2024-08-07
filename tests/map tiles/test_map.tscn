@@ -17,3 +17,6 @@ tile_map_path = NodePath("../TileMap")
 [node name="Ui" parent="CanvasLayer" instance=ExtResource("3_beni5")]
 visible = false
 metadata/_edit_horizontal_guides_ = [321.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
