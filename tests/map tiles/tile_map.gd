@@ -1,6 +1,7 @@
-extends TileMap
+class_name BoardTile extends TileMap
 
 var select_layer = 3
+var spawn_point : Vector2i
 
 enum SquareType {
 	NONE = 0,
@@ -14,8 +15,24 @@ enum SquareType {
 	STAIRS = 128,
 	BOSS = 256,
 	ESCAPE = 512,
-	LIFE_UP = 1024
+	LIFE_UP = 1024,
+	SPAWN_POINT = 2048
 }
+
+func _ready():
+	var tile_size = tile_set.tile_size
+	var map_size = self.get_used_rect()
+	
+	for x in range(map_size.position.x, map_size.position.x + map_size.size.x):
+		for y in range(map_size.position.y, map_size.position.y + map_size.size.y):
+			var tile_data : TileData = get_cell_tile_data(2, Vector2i(x,y))
+			var tile_id = self.get_cell_source_id(2, Vector2i(x,y))
+			
+			if tile_data != null:
+				var custom_data = tile_data.get_custom_data("Type")
+				if custom_data == 2048:
+					#print("Tile at ", x, ",", y, " has custom data: ", custom_data)
+					spawn_point = Vector2i(x,y)
 
 func _process(_delta):
 	if get_used_cells(select_layer).size() != 0:
@@ -29,5 +46,3 @@ func _process(_delta):
 		if is_square:
 			set_cell(select_layer, current_tile, 0, Vector2(2,50), 0)
 			
-		
-	

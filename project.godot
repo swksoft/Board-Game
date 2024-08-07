@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Board Game"
 config/tags=PackedStringArray("demo")
-run/main_scene="res://tests/chest section/main_chest.tscn"
+run/main_scene="res://tests/map tiles/test_map.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

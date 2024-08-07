@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjnb440dgjxwm"]
+[gd_scene load_steps=6 format=3 uid="uid://cjnb440dgjxwm"]
 
 [ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_j03bb"]
 [ext_resource type="Script" path="res://tests/map tiles/character_test.gd" id="1_roeyl"]
+[ext_resource type="PackedScene" uid="uid://t35jidqv0onk" path="res://tests/map tiles/stats_character_board.tscn" id="2_bdwfv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmps4"]
 atlas = ExtResource("1_j03bb")
@@ -10,9 +11,12 @@ region = Rect2(928, 2432, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujs1u"]
 size = Vector2(32, 32)
 
-[node name="CharacterTest" type="Node2D"]
+[node name="CharacterTest" type="Node2D" node_paths=PackedStringArray("stats_board")]
 script = ExtResource("1_roeyl")
-movement = 3
+stats_board = NodePath("StatsCharacterBoard")
+
+[node name="StatsCharacterBoard" parent="." node_paths=PackedStringArray("sprite_node") instance=ExtResource("2_bdwfv")]
+sprite_node = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_mmps4")

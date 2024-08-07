@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://t35jidqv0onk"]
+
+[ext_resource type="Script" path="res://tests/map tiles/stats_character_board.gd" id="1_7j11s"]
+
+[node name="StatsCharacterBoard" type="Node"]
+script = ExtResource("1_7j11s")

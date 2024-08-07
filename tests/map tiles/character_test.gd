@@ -1,25 +1,21 @@
 @icon("res://icons/icon_happy.svg")
-extends Node2D
+class_name CharacterBoard extends Node2D
 
-# TODO: SOLO APARECER TILES DISPONIBLES AL CLICKEAR AL PERSONAJE
-# TODO: al presionar click derecho se deben quitar los cuadros disponibles
-# TODO Testear si al poner 2 jugadores cada uno se mueve por su cuenta
-
-@export_range(0,9) var movement = 1
+@export var tile_map_path : BoardTile
+@export var stats_board : StatsCharacterBoard
 
 var mouse_inside_area = false
-
 var panel_layer = 1
 var movement_layer = 4
 var type_layer = 2
 var can_move = false
+var spawn_point : Vector2i
 
-@onready var tile_map = get_parent().get_node("TileMap") as TileMap
+@onready var tile_map = tile_map_path as TileMap
 
 func _ready():
-	#show_adjacent_tiles(get_available_tiles())
-	
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
+	position = tile_map.map_to_local(spawn_point)
 
 func get_current_tile_type():
 	var player_position: Vector2i = tile_map.local_to_map(global_position)
@@ -65,7 +61,7 @@ func get_available_tiles():
 		var current_pos = front[0]
 		var current_dist = front[1]
 		
-		if current_dist < movement:
+		if current_dist < stats_board.movement:
 			for direction in directions:
 				var new_pos = current_pos + direction
 				if not visited.has(new_pos) and is_valid_tile(new_pos):
