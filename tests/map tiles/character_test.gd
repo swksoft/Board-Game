@@ -10,12 +10,14 @@ var movement_layer = 4
 var type_layer = 2
 var can_move = false
 var spawn_point : Vector2i
+var current_position : Vector2i
 
 @onready var tile_map = tile_map_path as TileMap
 
 func _ready():
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 	position = tile_map.map_to_local(spawn_point)
+	current_position = tile_map.local_to_map(position)
 
 func get_current_tile_type():
 	var player_position: Vector2i = tile_map.local_to_map(global_position)
@@ -115,7 +117,10 @@ func _input(event):
 			
 			show_adjacent_tiles(get_available_tiles())
 			
-			print("El jugador está en un panel de tipo: ", get_current_tile_type())
+			#print("El jugador está en un panel de tipo: ", get_current_tile_type())
+			current_position = tile_map.local_to_map(position)
+			
+			EventsTest.emit_character_moved()
 
 func _on_area_2d_mouse_entered():
 	mouse_inside_area = true
