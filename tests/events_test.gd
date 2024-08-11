@@ -5,7 +5,7 @@ extends Node
 signal open_chest(char_stats)
 signal cancel_open_chest
 signal chest_entered
-signal character_moved
+signal character_moved(char)
 
 func emit_open_chest(char_stats):
 	emit_signal("open_chest", char_stats)
@@ -16,8 +16,8 @@ func emit_cancel_open_chest():
 func emit_chest_entered():
 	chest_entered.emit()
 
-func emit_character_moved():
-	character_moved.emit()
+func emit_character_moved(char):
+	character_moved.emit(char)
 
 # TODO: CAMBIAR A GLOBAL_DATA_TEST
 #func load_csv(file_path: String) -> Array:

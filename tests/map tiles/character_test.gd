@@ -11,6 +11,7 @@ var type_layer = 2
 var can_move = false
 var spawn_point : Vector2i
 var current_position : Vector2i
+var in_group = false
 
 @onready var tile_map = tile_map_path as TileMap
 
@@ -120,7 +121,7 @@ func _input(event):
 			#print("El jugador está en un panel de tipo: ", get_current_tile_type())
 			current_position = tile_map.local_to_map(position)
 			
-			EventsTest.emit_character_moved()
+			EventsTest.emit_character_moved(self)
 
 func _on_area_2d_mouse_entered():
 	mouse_inside_area = true

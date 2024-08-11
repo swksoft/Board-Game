@@ -3,30 +3,29 @@ extends Node2D
 @export var tile_map_path : BoardTile
 
 var characters = []
-var group_characters = []
-var grouped_characters = {}
+var groups = []
 
 func find_groups():
 	#group_characters.clear()
 	#grouped_characters.clear()
-	
-	var positions = {}
+	groups = []
+	var chars = self.get_children()
 
-	for child in self.get_children():
-		if child is CharacterBoard:
-			var position = tile_map_path.local_to_map(child.global_position)
-			#print("Child:", child.name, "Position:", position)
-		
-			if positions.has(position):
-				positions[position].append(child)
-			else:
-				positions[position] = [child]
-		
-	for pos in positions:
-		if positions[pos].size() > 1:
-			group_characters.append(positions[pos])
-			grouped_characters[pos] = positions[pos]
-			print_debug("Multiple characters at position", pos, ":", positions[pos])
+	for child in chars:
+		if !(child is CharacterBoard): continue
+		var position = tile_map_path.local_to_map(child.global_position)
+		var coincidences = []
+		for child2 in chars:
+			if child2 == child: continue
+			var position2 = tile_map_path.local_to_map(child2.global_position)
+			if position != position2: continue
+			coincidences.push_back(child2)
+			chars.remove_at(chars.find(child2))
+		if coincidences.size() > 0:
+			coincidences.push_back(child)
+			groups.push_back(coincidences)
+		chars.remove_at(chars.find(child))
+
 
 func _ready():
 	# Connect character_moved_signal
@@ -50,5 +49,10 @@ func _ready():
 		
 	find_groups()
 	
-func on_character_moved():
+func on_character_moved(character: CharacterBoard):
 	find_groups()
+	for group : Array in groups:
+		print(group)
+		if group.has(character):
+			for char in group:
+				char.global_position = character.global_position
