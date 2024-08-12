@@ -11,6 +11,7 @@ var type_layer = 2
 var can_move = false
 var spawn_point : Vector2i
 var current_position : Vector2i
+var in_group = false
 
 @onready var tile_map = tile_map_path as TileMap
 
@@ -112,15 +113,36 @@ func _input(event):
 		var is_walkable = tile_data.get_custom_data("CanMove")
 		
 		if Input.is_action_just_pressed("click") and is_walkable:
-			delete_adjacent_tiles(get_available_tiles())
-			position = tile_map.map_to_local(target_tile)
+			move(target_tile, false)
+		elif Input.is_action_just_pressed("right_click") and is_walkable:
+			if in_group: move(target_tile, true)
+			else: print("No está en grupo")
 			
-			show_adjacent_tiles(get_available_tiles())
+func move(target_tile, group):
+	delete_adjacent_tiles(get_available_tiles())
+	var previous_global = global_position
+	position = tile_map.map_to_local(target_tile)
 			
-			#print("El jugador está en un panel de tipo: ", get_current_tile_type())
-			current_position = tile_map.local_to_map(position)
+	show_adjacent_tiles(get_available_tiles())
 			
-			EventsTest.emit_character_moved()
+	#print("El jugador está en un panel de tipo: ", get_current_tile_type())
+	current_position = tile_map.local_to_map(position)
+	EventsTest.emit_character_moved(self, group, previous_global)
+
+func enter_group(n):
+	in_group = true
+	var x = n * 8
+	var y = 0
+	if n > 1:
+		y = 8
+		x = ceil(n/2)*8
+	$Sprite2D.offset = Vector2(x, y)
+	$Sprite2D.scale = Vector2(0.5, 0.5)
+	
+func leave_group():
+	in_group = false
+	$Sprite2D.offset = Vector2(0, 0)
+	$Sprite2D.scale = Vector2(1, 1)
 
 func _on_area_2d_mouse_entered():
 	mouse_inside_area = true
