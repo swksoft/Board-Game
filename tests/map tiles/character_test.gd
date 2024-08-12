@@ -130,14 +130,19 @@ func move(target_tile, group):
 	EventsTest.emit_character_moved(self, group, previous_global)
 
 func enter_group(n):
+	var i = n + 1
+	var y = -16
+	var x = -32
+	if i > 2:
+		x = -32
+		y = 16
+		i -= 2
+	x += 16 * i
+	
+		
 	in_group = true
-	var x = n * 8
-	var y = 0
-	if n > 1:
-		y = 8
-		x = ceil(n/2)*8
-	$Sprite2D.offset = Vector2(x, y)
 	$Sprite2D.scale = Vector2(0.5, 0.5)
+	$Sprite2D.offset = Vector2(x, y)
 	
 func leave_group():
 	in_group = false
