@@ -14,6 +14,14 @@ func find_groups():
 				chars = []
 			}
 		positions[char.global_position].chars.push_back(char)
+		
+	for position in positions:
+		if positions[position].chars.size() > 1:
+			var i = 0
+			for char in positions[position].chars:
+				char.enter_group(i)
+				i += 1
+		else: positions[position].chars[0].leave_group()
 
 
 func _ready():
@@ -38,11 +46,10 @@ func _ready():
 		
 	find_groups()
 	
-func on_character_moved(character: CharacterBoard):
-	var previous_pos = character.global_position
+func on_character_moved(character: CharacterBoard, move_in_group, from):
+	if move_in_group:
+		for position in positions:
+			if position == from:
+				for char in positions[position].chars:
+					char.global_position = character.global_position
 	find_groups()
-	for position in positions:
-		print(position)
-		if character.global_position == previous_pos:
-			for char in positions[position].chars:
-				char.global_position = character.global_position
