@@ -28,7 +28,6 @@ func _on_chest_show_options(char_stats):
 	# Limpiar botones anteriores si existen
 	for child in button_container.get_children():
 		if child.name != "ButtonMessage":
-			#print("lol!")
 			button_container.remove_child(child)
 			child.queue_free()
 	button_container.visible = true

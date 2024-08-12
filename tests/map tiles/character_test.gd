@@ -142,7 +142,7 @@ func leave_group():
 	in_group = false
 	$Sprite2D.offset = Vector2(0, 0)
 	$Sprite2D.scale = Vector2(1, 1)
-		print("El jugador está en un panel de tipo: ", get_current_tile_type())
+	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 
 func _on_area_2d_mouse_entered():
 	mouse_inside_area = true

@@ -59,7 +59,7 @@ show_behind_parent = true
 light_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="ButtonContainer" parent="CanvasLayer/Ui/CenterContainer" index="0"]
+[node name="ButtonMessage" parent="CanvasLayer/Ui/CenterContainer/ButtonContainer/V" index="0"]
 visible = true
 
 [node name="TileMap" type="TileMap" parent="."]
