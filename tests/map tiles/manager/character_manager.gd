@@ -3,28 +3,17 @@ extends Node2D
 @export var tile_map_path : BoardTile
 
 var characters = []
-var groups = []
+var positions = {}
 
 func find_groups():
-	#group_characters.clear()
-	#grouped_characters.clear()
-	groups = []
+	positions = {}
 	var chars = self.get_children()
-
-	for child in chars:
-		if !(child is CharacterBoard): continue
-		var position = tile_map_path.local_to_map(child.global_position)
-		var coincidences = []
-		for child2 in chars:
-			if child2 == child: continue
-			var position2 = tile_map_path.local_to_map(child2.global_position)
-			if position != position2: continue
-			coincidences.push_back(child2)
-			chars.remove_at(chars.find(child2))
-		if coincidences.size() > 0:
-			coincidences.push_back(child)
-			groups.push_back(coincidences)
-		chars.remove_at(chars.find(child))
+	for char in chars:
+		if !positions.has(char.global_position): 
+			positions[char.global_position] = {
+				chars = []
+			}
+		positions[char.global_position].chars.push_back(char)
 
 
 func _ready():
@@ -50,9 +39,10 @@ func _ready():
 	find_groups()
 	
 func on_character_moved(character: CharacterBoard):
+	var previous_pos = character.global_position
 	find_groups()
-	for group : Array in groups:
-		print(group)
-		if group.has(character):
-			for char in group:
+	for position in positions:
+		print(position)
+		if character.global_position == previous_pos:
+			for char in positions[position].chars:
 				char.global_position = character.global_position
