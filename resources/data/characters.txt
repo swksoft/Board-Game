@@ -1,0 +1,4 @@
+name,class,atk,eva,def,lck_board,tch,agl,bls,lck_interact,cht,icon
+Hero,Warrior,10,15,20,5,10,8,2,3,7,res://icons/hero.png
+Mage,Mage,8,12,15,10,12,10,3,4,6,res://icons/mage.png
+Thief,Thief,5,20,10,15,8,12,1,2,6,res://icons/thief.png

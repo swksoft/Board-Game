@@ -1,5 +1,4 @@
 name,class,atk,eva,def,lck_board,tch,agl,bls,lck_interact,cht,icon,max_hp,type,dice,actions
 Richard,Warrior,10,15,20,5,10,8,2,3,7,res://tests/chest section/entities/assets/hero.png,14,friend,6,"attack,attack,standby,attack,attack,guard"
 John,Mage,8,12,15,10,12,4,3,4,6,res://tests/chest section/entities/assets/mage.png,18,friend,6,"standby,attack,attack,standby,ganzua,assassinate"
-Duende Verde,Thief,5,20,10,15,8,4,1,2,6,res://tests/chest section/entities/assets/thief.png,17,friend,6,"attack,standby,attack,attack,standby,attack"
-Space Sex,Especialist,8,8,8,8,8,8,8,8,8,res://tests/chest section/entities/assets/sex.png,20,friend,6,"attack,standby,attack,attack,standby,attack"
+Duende Verde,Thief,5,20,10,15,8,4,1,2,6,res://tests/chest section/entities/assets/thief.png,17,enemy,6,"attack,standby,attack,attack,standby,attack"
