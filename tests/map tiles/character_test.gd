@@ -18,7 +18,6 @@ var in_group = false
 func _ready():
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 	position = tile_map.map_to_local(spawn_point)
-	current_position = tile_map.local_to_map(position)
 
 func get_current_tile_type():
 	var player_position: Vector2i = tile_map.local_to_map(global_position)
@@ -148,6 +147,7 @@ func leave_group():
 	in_group = false
 	$Sprite2D.offset = Vector2(0, 0)
 	$Sprite2D.scale = Vector2(1, 1)
+		print("El jugador está en un panel de tipo: ", get_current_tile_type())
 
 func _on_area_2d_mouse_entered():
 	mouse_inside_area = true

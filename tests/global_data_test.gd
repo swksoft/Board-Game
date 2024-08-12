@@ -95,9 +95,8 @@ func reset_available_data():
 	available_items_ids.clear()
 	
 	var data_char = load_csv("res://resources/data/characters.csv")
-	for i in range(min(data_char.size(), data_char.size())):
+	for i in range(min(3, data_char.size())):
 		available_characters.append(all_characters[i])
-		
 	var data_items = load_csv("res://resources/data/characters.csv")
 	for i in range(min(3, data_items.size())):
 		available_items_ids.append(all_items[i])
