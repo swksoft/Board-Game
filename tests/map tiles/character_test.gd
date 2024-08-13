@@ -12,10 +12,14 @@ var can_move = false
 var spawn_point : Vector2i
 var current_position : Vector2i
 var in_group = false
+var priority = 1
 
 @onready var tile_map = tile_map_path as TileMap
 
 func _ready():
+	#$Area2D.priority = priority
+	#$Area2D.collision_layer = priority
+	
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 	position = tile_map.map_to_local(spawn_point)
 
@@ -89,12 +93,15 @@ func is_valid_tile(tile_position):
 func _process(_delta):
 	if mouse_inside_area:
 		if Input.is_action_just_pressed("click"):
-			if can_move:
-				can_move = false
-				delete_adjacent_tiles(get_available_tiles())
-			else:	
-				can_move = true
-				show_adjacent_tiles(get_available_tiles())
+			if in_group == true:
+				EventsTest.emit_grouped_character()
+			else:
+				if can_move:
+					can_move = false
+					delete_adjacent_tiles(get_available_tiles())
+				else:	
+					can_move = true
+					show_adjacent_tiles(get_available_tiles())
 		elif Input.is_action_just_pressed("right_click"):
 			can_move = false
 			delete_adjacent_tiles(get_available_tiles())
@@ -137,7 +144,6 @@ func enter_group(n):
 		y = 16
 		i -= 2
 	x += 16 * i
-	
 		
 	in_group = true
 	$Sprite2D.scale = Vector2(0.5, 0.5)
@@ -150,6 +156,7 @@ func leave_group():
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 
 func _on_area_2d_mouse_entered():
+	print("a")
 	mouse_inside_area = true
 
 func _on_area_2d_mouse_exited():

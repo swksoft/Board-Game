@@ -1,6 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 builds
-ptt.json
 resources/data/*.translation
-ptt.json
+addons/project_time_tracker

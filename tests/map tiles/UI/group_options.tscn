@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://tests/map tiles/UI/group_options.gd" id="1_mfbqu"]
 
 [node name="GroupOptions" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,10 +27,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ButtonContainer" type="PanelContainer" parent="CenterContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="V" type="VBoxContainer" parent="CenterContainer/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ButtonMessage" type="Label" parent="CenterContainer/ButtonContainer/V"]
