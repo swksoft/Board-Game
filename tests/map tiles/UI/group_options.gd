@@ -21,12 +21,12 @@ func _cancel():
 	visible = false
 	get_tree().paused = false
 
-func on_grouped_character():
+func on_grouped_character(grouped_char):
 	print("A")
 	
 	on_menu = true
 	
-	var characters_in_group = character_manager.positions
+	var positions = character_manager.positions
 
 #func on_show_options(characters_in_group: Array):
 	get_tree().paused = true
@@ -44,13 +44,14 @@ func on_grouped_character():
 	button_container.add_child(all_button)
 	
 	# Generar
-	for character in characters_in_group.keys():
-		var chars_at_pos = characters_in_group[character]["chars"]
-		for char in chars_at_pos.size():
+	for position in positions:
+		var chars_at_pos : Array = positions[position].chars
+		if !chars_at_pos.has(grouped_char): continue
+		for char in chars_at_pos:
 			var button = Button.new()
-			button.text = str(chars_at_pos[char].name)
+			button.text = str(char.name)
 			#button.pressed.connect(self._on_button_pressed, char) # no funciona
-			button.connect("pressed", _on_button_pressed.bind(chars_at_pos[char])) # funciona
+			button.connect("pressed", _on_button_pressed.bind(char)) # funciona
 			#button.pressed.connect(self._on_button_pressed.bind(char)) # funciona
 			button_container.add_child(button)
 			

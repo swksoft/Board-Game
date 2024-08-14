@@ -94,7 +94,7 @@ func _process(_delta):
 	if mouse_inside_area:
 		if Input.is_action_just_pressed("click"):
 			if in_group == true:
-				EventsTest.emit_grouped_character()
+				EventsTest.emit_grouped_character(self)
 			else:
 				if can_move:
 					can_move = false
