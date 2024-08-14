@@ -25,4 +25,7 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
+[connection signal="move_entire_group" from="CanvasLayer/GroupOptions" to="CharacterManager" method="_on_group_options_move_entire_group"]
+[connection signal="move_group" from="CanvasLayer/GroupOptions" to="CharacterManager" method="_on_group_options_move_group"]
+
 [editable path="CanvasLayer/GroupOptions"]

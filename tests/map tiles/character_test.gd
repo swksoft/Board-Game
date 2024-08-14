@@ -138,12 +138,12 @@ func move(target_tile, group):
 func enter_group(n):
 	var i = n + 1
 	var y = -16
-	var x = -32
+	var x = -40
 	if i > 2:
-		x = -32
+		x = -40
 		y = 16
 		i -= 2
-	x += 16 * i
+	x += 20 * i
 		
 	in_group = true
 	$Sprite2D.scale = Vector2(0.5, 0.5)
@@ -156,7 +156,7 @@ func leave_group():
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 
 func _on_area_2d_mouse_entered():
-	print("a")
+	printerr("Input al jugador")
 	mouse_inside_area = true
 
 func _on_area_2d_mouse_exited():

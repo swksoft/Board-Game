@@ -1,6 +1,9 @@
 class_name BoardTile extends TileMap
 
 var select_layer = 3
+var panel_layer = 1
+var movement_layer = 4
+var type_layer = 2
 var spawn_point : Vector2i
 
 enum SquareType {
@@ -31,7 +34,6 @@ func _ready():
 			if tile_data != null:
 				var custom_data = tile_data.get_custom_data("Type")
 				if custom_data == 2048:
-					#print("Tile at ", x, ",", y, " has custom data: ", custom_data)
 					spawn_point = Vector2i(x,y)
 
 func _process(_delta):
@@ -45,4 +47,55 @@ func _process(_delta):
 		var is_square = tile_data.get_custom_data("Square")
 		if is_square:
 			set_cell(select_layer, current_tile, 0, Vector2(2,50), 0)
-			
+
+func get_available_tiles(group_pos, movement):
+	var pos : Vector2i = local_to_map(group_pos)
+	var reachable_tiles = []
+	var queue = []
+	var visited = {}
+	
+	queue.append([pos, 0])
+	visited[pos] = true
+	
+	var directions = [
+		Vector2i(0, -1),
+		Vector2i(0, 1),
+		Vector2i(-1, 0),
+		Vector2i(1, 0) 
+	]
+	
+	while queue.size() > 0:
+		var front = queue.pop_front()
+		var current_pos = front[0]
+		var current_dist = front[1]
+		
+		if current_dist < movement:
+			for direction in directions:
+				var new_pos = current_pos + direction
+				if not visited.has(new_pos) and is_valid_tile(new_pos):
+					queue.append([new_pos, current_dist + 1])
+					visited[new_pos] = true
+					reachable_tiles.append(new_pos)
+	
+	return reachable_tiles
+
+func is_valid_tile(tile_position):
+	var cell_x = int(tile_position.x)
+	var cell_y = int(tile_position.y)
+	var tile_data : TileData = get_cell_tile_data(panel_layer, Vector2i(cell_x, cell_y))
+	
+	if tile_data == null : return false
+	
+	var is_square = tile_data.get_custom_data("Square")
+	
+	if is_square:
+		return true
+	return false
+
+func show_adjacent_tiles(data):
+	for tile in data:
+		set_cell(movement_layer, tile, 0, Vector2(22,50))
+
+#func delete_adjacent_tiles(data):
+	#for tile in data:
+		#erase_cell(movement_layer, tile)

@@ -7,13 +7,14 @@ var positions = {}
 
 func find_groups():
 	positions = {}
+	
 	var chars = self.get_children()
+	
 	for char in chars:
 		if !positions.has(char.global_position): 
 			positions[char.global_position] = {
 				chars = []
 			}
-		#positions[char.global_position].chars.push_back(char)
 		positions[char.global_position]["chars"].append(char)
 		
 	for position in positions:
@@ -24,40 +25,6 @@ func find_groups():
 				char.enter_group(i)
 				i += 1
 		else: positions[position].chars[0].leave_group()
-	
-	#for pos in positions.keys():
-		#var chars_at_pos = positions[pos]["chars"]
-		#if chars_at_pos.size() > 1:
-			#group_characters_at_position(pos, chars_at_pos)
-		#else:
-			#chars_at_pos[0].leave_group()
-#
-	print(positions)
-
-func group_characters_at_position(pos, characters_at_pos):
-	pass
-	#var group_node = Node2D.new()
-	#group_node.name = "group"
-	#group_node.position = pos
-	#
-	#var area2d = Area2D.new()
-	#var collision_shape = CollisionShape2D.new()
-	#var shape = RectangleShape2D.new()
-	#shape.extents = Vector2(32, 32)  # Ajusta esto según el tamaño de la casilla
-	#collision_shape.shape = shape
-	#area2d.add_child(collision_shape)
-	#
-	#group_node.add_child(area2d)
-	#
-	#for char in characters_at_pos:
-		#char.position -= pos  # Ajusta la posición al nuevo nodo
-		##group_node.add_child(char)
-		##group_node.move_child(char, group_node)
-		#group_node.move_child(char, -1)
-	#
-	#
-	#add_child(group_node)
-	#positions.append(group_node)
 
 func _ready():
 	EventsTest.character_moved.connect(on_character_moved)
@@ -75,11 +42,6 @@ func _ready():
 		char_instance.name = str(char_data["name"])
 		add_child(char_instance)
 		char_instance.stats_board.set_character_data(char_data)
-		#char_instance.priority = number + 1
-		#break
-		
-		number += 1
-		
 	find_groups()
 	
 func on_character_moved(character: CharacterBoard, move_in_group, from):
@@ -89,3 +51,25 @@ func on_character_moved(character: CharacterBoard, move_in_group, from):
 				for char in positions[position].chars:
 					char.global_position = character.global_position
 	find_groups()
+
+func _on_group_options_move_entire_group(chars):
+	var average_movement = 0
+	var sum = 0
+	
+	for char in chars:
+		char.can_move = true
+		sum += char.stats_board.movement
+	
+	average_movement = (sum / chars.size()) - chars.size()
+	if average_movement <= 1:
+		average_movement = 1
+	
+	tile_map_path.show_adjacent_tiles(tile_map_path.get_available_tiles(chars[0].global_position, average_movement))
+
+func _on_group_options_move_group(char):
+	for child in get_children().size():
+		var char_name = get_child(child) as CharacterBoard
+		
+		if str(char_name) == str(char):
+			char_name.can_move = true
+			char_name.show_adjacent_tiles(char_name.get_available_tiles())

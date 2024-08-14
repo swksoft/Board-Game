@@ -32,8 +32,10 @@ layout_mode = 2
 [node name="V" type="VBoxContainer" parent="CenterContainer/ButtonContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+alignment = 1
 
 [node name="ButtonMessage" type="Label" parent="CenterContainer/ButtonContainer/V"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "¿Quién se moverá?"
+horizontal_alignment = 1
