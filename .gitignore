@@ -3,3 +3,4 @@
 builds
 resources/data/*.translation
 addons/project_time_tracker
+resources/data/Assets
