@@ -36,6 +36,7 @@ func get_current_tile_type():
 		for name in tile_map.SquareType.keys():
 			if tile_map.SquareType[name] == tile_type_value:
 				return name
+	
 	return "NONE"
 
 func show_adjacent_tiles(data):
@@ -107,10 +108,6 @@ func _process(_delta):
 		elif Input.is_action_just_pressed("right_click"):
 			can_move = false
 			delete_adjacent_tiles()
-				
-	#elif Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("click"):
-		#can_move = false
-		#delete_adjacent_tiles()
 
 func _input(event):
 	if can_move:
@@ -133,9 +130,40 @@ func move(target_tile, group):
 			
 	show_adjacent_tiles(get_available_tiles())
 			
-	#print("El jugador está en un panel de tipo: ", get_current_tile_type())
 	current_position = tile_map.local_to_map(position)
+	
 	EventsTest.emit_character_moved(self, group, previous_global)
+	
+	EventsTest.emit_board_message_display(stats_board.character_data["name"] + " está en un panel de tipo: " + get_current_tile_type())
+	
+	get_panel(get_current_tile_type())
+
+func get_panel(current_tile):
+	match current_tile:
+		"BATTLE":
+			pass
+		"TREASURE":
+			pass
+		"DIALOG":
+			pass
+		"BLIND":
+			pass
+		"EVENT":
+			pass
+		"BATTLE_EVENT":
+			pass
+		"TRAP":
+			pass
+		"STAIRS":
+			pass
+		"BOSS":
+			pass
+		"ESCAPE":
+			pass
+		"LIFE_UP":
+			pass
+		"SPAWN_POINT":
+			pass		
 
 func enter_group(n):
 	var i = n + 1
@@ -155,7 +183,6 @@ func leave_group():
 	in_group = false
 	$Sprite2D.offset = Vector2(0, 0)
 	$Sprite2D.scale = Vector2(1, 1)
-	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 
 func _on_area_2d_mouse_entered():
 	printerr("Input al jugador")
