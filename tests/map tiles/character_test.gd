@@ -19,7 +19,7 @@ var priority = 1
 func _ready():
 	#$Area2D.priority = priority
 	#$Area2D.collision_layer = priority
-	
+	EventsTest.grouped_character.connect(on_grouped_char)
 	print("El jugador está en un panel de tipo: ", get_current_tile_type())
 	position = tile_map.map_to_local(spawn_point)
 
@@ -42,9 +42,11 @@ func show_adjacent_tiles(data):
 	for tile in data:
 		tile_map.set_cell(movement_layer, tile, 0, Vector2(22,50))
 
-func delete_adjacent_tiles(data):
-	for tile in data:
-		tile_map.erase_cell(movement_layer, tile)
+func delete_adjacent_tiles():
+	print("borrando in cells")
+	var used_cells = tile_map.get_used_cells(movement_layer)
+	for cell in used_cells:
+		tile_map.erase_cell(movement_layer, cell)
 
 func get_available_tiles():
 	var player_position: Vector2i = tile_map.local_to_map(global_position)
@@ -98,17 +100,17 @@ func _process(_delta):
 			else:
 				if can_move:
 					can_move = false
-					delete_adjacent_tiles(get_available_tiles())
+					delete_adjacent_tiles()
 				else:	
 					can_move = true
 					show_adjacent_tiles(get_available_tiles())
 		elif Input.is_action_just_pressed("right_click"):
 			can_move = false
-			delete_adjacent_tiles(get_available_tiles())
+			delete_adjacent_tiles()
 				
-	elif Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("click"):
-		can_move = false
-		delete_adjacent_tiles(get_available_tiles())
+	#elif Input.is_action_just_pressed("right_click") or Input.is_action_just_pressed("click"):
+		#can_move = false
+		#delete_adjacent_tiles()
 
 func _input(event):
 	if can_move:
@@ -125,7 +127,7 @@ func _input(event):
 			else: print("No está en grupo")
 			
 func move(target_tile, group):
-	delete_adjacent_tiles(get_available_tiles())
+	delete_adjacent_tiles()
 	var previous_global = global_position
 	position = tile_map.map_to_local(target_tile)
 			
@@ -161,3 +163,6 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	mouse_inside_area = false
+
+func on_grouped_char(_char):
+	delete_adjacent_tiles()
