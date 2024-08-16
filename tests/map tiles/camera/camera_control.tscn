@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c35h16psyucp7"]
+
+[ext_resource type="Script" path="res://tests/map tiles/camera/camera_control.gd" id="1_31evn"]
+
+[node name="CameraControl" type="Camera2D"]
+position = Vector2(-175, -16)
+anchor_mode = 0
+limit_left = -304
+limit_top = -208
+limit_right = 912
+limit_bottom = 592
+editor_draw_limits = true
+script = ExtResource("1_31evn")
