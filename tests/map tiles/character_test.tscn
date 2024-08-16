@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjnb440dgjxwm"]
+[gd_scene load_steps=7 format=3 uid="uid://cjnb440dgjxwm"]
 
 [ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_j03bb"]
 [ext_resource type="Script" path="res://tests/map tiles/character_test.gd" id="1_roeyl"]
 [ext_resource type="PackedScene" uid="uid://t35jidqv0onk" path="res://tests/map tiles/stats_character_board.tscn" id="2_bdwfv"]
+[ext_resource type="Texture2D" uid="uid://8qrhwhakpqa8" path="res://resources/textures/lightpix.png" id="4_h6pu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmps4"]
 atlas = ExtResource("1_j03bb")
@@ -25,6 +26,15 @@ texture = SubResource("AtlasTexture_mmps4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ujs1u")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Light" type="PointLight2D" parent="."]
+visible = false
+texture_filter = 1
+energy = 0.5
+blend_mode = 2
+texture = ExtResource("4_h6pu5")
+texture_scale = 4.0
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

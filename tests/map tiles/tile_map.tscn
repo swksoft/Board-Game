@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwav2cr78igxv"]
+[gd_scene load_steps=8 format=3 uid="uid://cwav2cr78igxv"]
 
 [ext_resource type="Texture2D" uid="uid://sfs6ueeixwfk" path="res://maps/assets/ProjectUtumno_full.png" id="1_bl8nq"]
 [ext_resource type="Script" path="res://tests/map tiles/tile_map.gd" id="2_4a7he"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_br25q"]
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4t0o8"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7alej"]
+polygon = PackedVector2Array(16, -16, -16, -16, -16, 16, 16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qkx47"]
 texture = ExtResource("1_bl8nq")
@@ -271,6 +280,7 @@ texture_region_size = Vector2i(32, 32)
 8:4/0 = 0
 9:4/0 = 0
 10:4/0 = 0
+10:4/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_4t0o8")
 11:4/0 = 0
 12:4/0 = 0
 13:4/0 = 0
@@ -3064,6 +3074,7 @@ texture_region_size = Vector2i(32, 32)
 20:50/0 = 0
 21:50/0 = 0
 22:50/0 = 0
+22:50/0/occlusion_layer_1/polygon = SubResource("OccluderPolygon2D_7alej")
 22:50/0/custom_data_2 = true
 23:50/0 = 0
 24:50/0 = 0
@@ -5903,6 +5914,7 @@ texture_region_size = Vector2i(32, 32)
 62:94/0 = 0
 63:94/0 = 0
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_br25q")
 1:0/0 = 0
 1:1/0 = 0
 0:1/0 = 0
@@ -6070,6 +6082,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_yyfdr"]
 tile_size = Vector2i(32, 32)
+occlusion_layer_0/light_mask = 1
+occlusion_layer_1/light_mask = 1
 custom_data_layer_0/name = "Square"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "Type"
@@ -6079,17 +6093,28 @@ custom_data_layer_2/type = 1
 sources/0 = SubResource("TileSetAtlasSource_qkx47")
 
 [node name="TileMap" type="TileMap"]
+clip_children = 2
 position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_yyfdr")
 rendering_quadrant_size = 32
 format = 2
 layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(393225, 655360, 4, 393226, 655360, 4, 262156, 655360, 4, 196622, 655360, 4, 262158, 655360, 4, 262159, 655360, 4, 327683, 0, 0, 393219, 0, 0, 393220, 0, 0, 262147, 0, 0, 262148, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 196618, 0, 0, 196619, 0, 0, 131083, 0, 0, 131084, 0, 0, 65548, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 65553, 0, 0, 131089, 0, 0, 131090, 0, 0, 196626, 0, 0, 262162, 0, 0, 327698, 0, 0, 393234, 0, 0, 393233, 0, 0, 458769, 0, 0, 458768, 0, 0, 458767, 0, 0, 458766, 0, 0, 458765, 0, 0, 524301, 0, 0, 524300, 0, 0, 589836, 0, 0, 589835, 0, 0, 589834, 0, 0, 589833, 0, 0, 589832, 0, 0, 589831, 0, 0, 589830, 0, 0, 524294, 0, 0, 458758, 0, 0, 458757, 0, 0, 458756, 0, 0)
 layer_1/name = "Panel"
 layer_1/tile_data = PackedInt32Array(327684, 2031616, 14, 327686, 2097152, 14, 327687, 2097152, 14, 393223, 2228224, 14, 458759, 2097152, 14, 458760, 2162688, 14, 458761, 2031616, 14, 524297, 2097152, 14, 524298, 1966080, 14, 524299, 1966080, 14, 458764, 2031616, 14, 458763, 2031616, 14, 458762, 2097152, 14, 524295, 2097152, 14, 524296, 2031616, 14, 262149, 2228224, 14, 262150, 1966080, 14, 393222, 2228224, 14, 393221, 2228224, 14, 262151, 2031616, 14, 327688, 2097152, 14, 327689, 2097152, 14, 327690, 2162688, 14, 327691, 2031616, 14, 327692, 2162688, 14, 393227, 2162688, 14, 393228, 1966080, 14, 393229, 1966080, 14, 327693, 2031616, 14, 262157, 1966080, 14, 196621, 2097152, 14, 131085, 1966080, 14, 65549, 2097152, 14, 65550, 1966080, 14, 131086, 1966080, 14, 131087, 2162688, 14, 131088, 2031616, 14, 196624, 2031616, 14, 262160, 2031616, 14, 327696, 2031616, 14, 393232, 2097152, 14, 393231, 2031616, 14, 393230, 2031616, 14, 65551, 2097152, 14, 65552, 2162688, 14, 327694, 2097152, 14, 327695, 1966080, 14, 327697, 2228224, 14, 393224, 1966080, 14, 262155, 2228224, 14, 196625, 2031616, 14, 262161, 2097152, 14, 196623, 2031616, 14, 196620, 1966080, 14, 327685, 2162688, 14)
 layer_2/name = "PanelType"
 layer_2/tile_data = PackedInt32Array(393222, 393216, 0, 524299, 393216, 0, 327697, 393216, 0, 524296, 1703936, 50, 262151, 65536, 55, 196621, 131072, 51, 393223, 131072, 51, 458760, 131072, 51, 393224, 1507328, 54, 262155, 1507328, 54, 458761, 1507328, 54, 458763, 1507328, 54, 262160, 1507328, 54, 327696, 1507328, 54, 393232, 1507328, 54, 65549, 4128768, 49, 65550, 4128768, 49, 65551, 4128768, 49, 65552, 4128768, 49, 131088, 4128768, 49, 131087, 4128768, 49, 131086, 4128768, 49, 131085, 4128768, 49, 327689, 458752, 27, 196625, 393216, 27, 524295, 2490368, 11, 262161, 2490368, 268435467, 458764, 2555904, 34, 524297, 3276800, 43, 327684, 1245184, 0)
 layer_3/name = "Selected"
+layer_3/navigation_enabled = false
 layer_3/tile_data = PackedInt32Array()
 layer_4/name = "Movement"
 layer_4/tile_data = PackedInt32Array()
+layer_5/name = "Shadow"
+layer_5/tile_data = PackedInt32Array()
 script = ExtResource("2_4a7he")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+editor_only = true
+blend_mode = 1
+shadow_color = Color(0, 0, 0, 1)
