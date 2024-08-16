@@ -1,3 +1,3 @@
 name,atk,eva,def,bls,lck_interact,cht,icon,max_hp,type,dice,actions
-Goblin,5,8,10,1,2,3,res://icons/goblin.png,24,enemy,6,"attack,attack,standby,attack,attack,guard"
-Orc,10,6,12,2,3,4,res://icons/orc.png,32,enemy,6,"standby,attack,attack,standby,guard,assassinate"
+Goblin,5,8,10,1,2,3,res://tests/chest section/entities/assets/goblin.png,24,enemy,6,"attack,attack,standby,attack,attack,guard"
+Orc,10,6,12,2,3,4,res://tests/chest section/entities/assets/orc.png,32,enemy,6,"standby,attack,attack,standby,guard,assassinate"

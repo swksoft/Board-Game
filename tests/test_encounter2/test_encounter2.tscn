@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crkxed8hluw1o" path="res://tests/test_encounter2/dice_manager.tscn" id="3_vat8h"]
 
 [node name="TestEncounter2" type="Control"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,9 +43,11 @@ visible = false
 layout_mode = 1
 
 [node name="CombatManager" parent="." node_paths=PackedStringArray("dice_manager") groups=["combat_manager"] instance=ExtResource("2_t14s4")]
+process_mode = 1
 dice_manager = NodePath("../DiceManager")
 
 [node name="DiceManager" parent="." instance=ExtResource("3_vat8h")]
+process_mode = 1
 
 [connection signal="button_down" from="Ui/VBoxContainer/Bottom/Center/AttackButton" to="CombatManager" method="_on_attack_button_button_down"]
 [connection signal="update_information" from="CombatManager" to="Ui" method="_on_combat_manager_update_information"]

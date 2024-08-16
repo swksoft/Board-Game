@@ -6,6 +6,7 @@ var all_enemies = {}
 var all_items = {}
 
 var available_characters = []
+var available_enemies = []
 var available_items_ids = []
 
 # Función para cargar datos desde un archivo .csv
@@ -100,6 +101,9 @@ func reset_available_data():
 	var data_items = load_csv("res://resources/data/characters.csv")
 	for i in range(min(3, data_items.size())):
 		available_items_ids.append(all_items[i])
+	var data_enemies = load_csv("res://resources/data/enemies.csv")
+	for i in range(min(3, data_enemies.size())):
+		available_enemies.append(all_enemies[i])
 
 func load_all_data():
 	load_characters("res://resources/data/characters.csv")

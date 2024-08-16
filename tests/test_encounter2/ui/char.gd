@@ -15,15 +15,15 @@ func _ready():
 	combat_manager = get_tree().get_first_node_in_group("combat_manager")
 	combat_manager.turn_advanced.connect(update)
 
-func init(coming_char):
+func init(coming_char: Dictionary):
 	#coming_char.stat_changed.connect(update)
 	char = coming_char
-	rect.texture.region = Rect2(char.image.x, char.image.y, 32, 32)
+	rect.texture = load(char["icon"])
 	update()
 	
 func update():
-	name_label.text = char.name
-	hp_label.text = str(char.hp)
-	atk_label.text = str(char.atk)
-	dfs_label.text = str(char.dfs)
-	eva_label.text = str(char.eva)
+	name_label.text = char["name"]
+	hp_label.text = str(char["max_hp"])
+	atk_label.text = str(char["atk"])
+	dfs_label.text = str(char["def"])
+	eva_label.text = str(char["eva"])
