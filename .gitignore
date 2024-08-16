@@ -5,3 +5,6 @@ resources/data/*.translation
 addons/project_time_tracker
 resources/data/Assets
 /resources/Assets
+ptt.json
+*.json
+*.translation
