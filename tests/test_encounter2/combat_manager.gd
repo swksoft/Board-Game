@@ -10,7 +10,7 @@ signal update_lifebar
 
 @export var dice_manager : DiceManager
 @export var max_turns := 6
-
+@export var enemy_container : NodePath
 @export var time = 1
 
 var turns
@@ -86,12 +86,11 @@ func _on_attack_button_button_down():
 	#enemy_attack(enemies, characters)
 	turn_advanced.emit()
 
-func take_damage(amount):
+func take_damage(amount, target):
+	target -= amount
 	
-	player_hp -= amount
-	
-	if player_hp <= 0:
-		player_hp = 0
+	if target <= 0:
+		target = 0
 		update_information.emit("Game Over")
 		$"../GameOverScreen".visible = true
 		get_tree().paused = true
@@ -102,36 +101,51 @@ func party_attack(party, opp):
 	var enemy_icon : String
 	var icon : String
 	
-	for character in party:
-		await get_tree().create_timer(time).timeout
-		var dice = dice_manager.throw_dice(character.dice, character)
-		var action =  character.actions[dice-1]
-		
-		if character.type == "enemy":
-			enemy_icon = "[img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] "
-		
-		match action:
-			"attack":
-				if character.type == "enemy":
-					take_damage(character.atk)
-				else: opp.pick_random()["max_hp"].hp -= character.atk
-				
-				icon = "[img=16x16 region=960,1472,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-			"assassinate": 
-				var picked = opp.pick_random()
-				var chance = 100 - floor(picked.hp / picked.max_hp) * 100
-				var rng = RandomNumberGenerator.new()
-				var my_random_number = rng.randf_range(0, 100)
-				if my_random_number <= chance: picked.hp = 0
-				icon = "[img=16x16 region=480,1632,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-			"heal":
-				icon = "[img=16x16 region=1952,1312,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-			"standby":
-				icon = "[img=16x16 region=1152,960,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-			"guard":
-				icon = "[img=16x16 region=1088,1184,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-			"_":
-				icon = "[img=16x16 region=480,1632,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-		var message = enemy_icon + character.name + " rolled: " + action + " " + icon
-		update_information.emit(message)
-		
+	print("PARTY: ", party, "\n", "OPP: ", opp)
+	
+	#for character in party:
+		#await get_tree().create_timer(time).timeout
+		#var dice = dice_manager.throw_dice(character.dice, character)
+		#print_debug(dice)
+		#var action =  character.actions[dice-1]
+		#
+		#if character.type == "enemy":
+			#enemy_icon = "[img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] "
+		#
+		#match action:
+			#"attack":
+				#if character.type == "enemy":
+					#take_damage(character.atk, player_hp)
+				#else:
+					##print_debug("ENEMY SELECTED: ", enemy_container.find_child(str(opp.pick_random()["name"]))) # opp.pick_random()["name"]).name
+					#var enemy_selected = get_node(enemy_container).get_node(opp.pick_random()["name"])
+					##var enemy_selected = enemy_container.find_child(str(opp.pick_random()["name"]))
+					#
+					#enemy_selected.hp -= character.atk
+					#
+				#icon = "[img=16x16 region=960,1472,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
+			#"assassinate": 
+				#if character.type == "enemy":
+					#var chance = 100 - floor(player_hp / player_total_hp) * 100
+					#var rng = RandomNumberGenerator.new()
+					#var my_random_number = rng.randf_range(0, 100)
+					#if my_random_number <= chance: take_damage(player_hp, player_hp)
+				#else:
+					#var picked = get_node(enemy_container).get_node(opp.pick_random()["name"])
+					#var chance = 100 - floor(picked.hp / picked.max_hp) * 100
+					#var rng = RandomNumberGenerator.new()
+					#var my_random_number = rng.randf_range(0, 100)
+					#if my_random_number <= chance: take_damage(picked.hp, picked.max_hp)
+				#
+				#icon = "[img=16x16 region=480,1632,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
+			#"heal":
+				#icon = "[img=16x16 region=1952,1312,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
+			#"standby":
+				#icon = "[img=16x16 region=1152,960,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
+			#"guard":
+				#icon = "[img=16x16 region=1088,1184,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
+			#"_":
+				#icon = "[img=16x16 region=480,1632,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
+				#
+		#var message = enemy_icon + character.name + " rolled: " + action + " " + icon
+		#update_information.emit(message)

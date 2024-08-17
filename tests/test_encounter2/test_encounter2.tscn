@@ -45,6 +45,7 @@ layout_mode = 1
 [node name="CombatManager" parent="." node_paths=PackedStringArray("dice_manager") groups=["combat_manager"] instance=ExtResource("2_t14s4")]
 process_mode = 1
 dice_manager = NodePath("../DiceManager")
+enemy_container = NodePath("../Ui/VBoxContainer/Center/PanelContainer/EnemyContainer")
 
 [node name="DiceManager" parent="." instance=ExtResource("3_vat8h")]
 process_mode = 1

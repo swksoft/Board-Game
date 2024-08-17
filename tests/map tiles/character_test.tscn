@@ -33,6 +33,7 @@ visible = false
 texture_filter = 1
 energy = 0.5
 blend_mode = 2
+shadow_enabled = true
 texture = ExtResource("4_h6pu5")
 texture_scale = 4.0
 
