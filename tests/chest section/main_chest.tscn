@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://8c3a7q5m4x5t"]
 
-[ext_resource type="Script" path="res://tests/drag and drop/test_scene.gd" id="1_5qhsl"]
 [ext_resource type="PackedScene" uid="uid://cuq0sbg1eongd" path="res://tests/chest section/chest_manager.tscn" id="1_mp755"]
+[ext_resource type="PackedScene" uid="uid://cagyhpwrfybfn" path="res://tests/drag and drop/drag_manager.tscn" id="2_8ledl"]
 [ext_resource type="PackedScene" uid="uid://cw6mtoqdd5ut7" path="res://tests/chest section/character_placement.tscn" id="3_5gpgh"]
 [ext_resource type="PackedScene" uid="uid://jpxub7r2x5j2" path="res://tests/chest section/ui/ui.tscn" id="3_hktrj"]
 [ext_resource type="PackedScene" uid="uid://c5eao3gywpviy" path="res://tests/chest section/entities/chest.tscn" id="3_ifuwk"]
@@ -38,12 +38,10 @@ metadata/_edit_horizontal_guides_ = [48.0, 432.0]
 
 [node name="ChestManager" parent="." instance=ExtResource("1_mp755")]
 
-[node name="DragManager" type="Node2D" parent="."]
-script = ExtResource("1_5qhsl")
+[node name="DragManager" parent="." instance=ExtResource("2_8ledl")]
 
-[node name="Chest" parent="." node_paths=PackedStringArray("drag_manager") instance=ExtResource("3_ifuwk")]
+[node name="Chest" parent="." instance=ExtResource("3_ifuwk")]
 position = Vector2(432, 240)
-drag_manager = NodePath("../DragManager")
 
 [node name="ColorRect" parent="Chest" index="2"]
 metadata/_edit_use_anchors_ = true

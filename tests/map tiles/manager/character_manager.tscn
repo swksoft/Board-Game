@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b61te6hscuxti"]
+[gd_scene load_steps=3 format=3 uid="uid://b61te6hscuxti"]
 
 [ext_resource type="Script" path="res://tests/map tiles/manager/character_manager.gd" id="1_pe2tx"]
+[ext_resource type="PackedScene" uid="uid://cjnb440dgjxwm" path="res://tests/map tiles/character_test.tscn" id="2_3xlob"]
 
 [node name="CharacterManager" type="Node2D"]
 script = ExtResource("1_pe2tx")
+character_scene = ExtResource("2_3xlob")

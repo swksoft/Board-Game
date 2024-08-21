@@ -47,8 +47,8 @@ shadow_color = Color(0.792817, 0.792817, 0.792817, 1)
 shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3
 
-[node name="CharacterManager" parent="." node_paths=PackedStringArray("tile_map_path") instance=ExtResource("2_bwqwm")]
-tile_map_path = NodePath("../TileMap")
+[node name="CharacterManager" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("2_bwqwm")]
+tile_map = NodePath("../TileMap")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -69,6 +69,7 @@ shadow_enabled = true
 texture = ExtResource("8_3urgp")
 texture_scale = 8.0
 
+[connection signal="spawn_ready" from="TileMap" to="CharacterManager" method="_on_tile_map_spawn_ready"]
 [connection signal="move_entire_group" from="CanvasLayer/GroupOptions" to="CharacterManager" method="_on_group_options_move_entire_group"]
 [connection signal="move_group" from="CanvasLayer/GroupOptions" to="CharacterManager" method="_on_group_options_move_group"]
 

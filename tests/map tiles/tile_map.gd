@@ -1,5 +1,7 @@
 class_name BoardTile extends TileMap
 
+signal spawn_ready(location)
+
 var select_layer = 3
 var panel_layer = 1
 var movement_layer = 4
@@ -22,6 +24,35 @@ enum SquareType {
 	SPAWN_POINT = 2048
 }
 
+func get_panel(current_tile):
+	match current_tile:
+		"BATTLE":
+			pass
+		"TREASURE":
+			pass
+		"DIALOG":
+			pass
+		"BLIND":
+			pass
+		"EVENT":
+			pass
+		"BATTLE_EVENT":
+			pass
+		"TRAP":
+			pass
+		"STAIRS":
+			pass
+		"BOSS":
+			pass
+		"ESCAPE":
+			pass
+		"LIFE_UP":
+			pass
+		"SPAWN_POINT":
+			pass
+	
+	print(current_tile)
+
 func _ready():
 	var tile_size = tile_set.tile_size
 	var map_size = self.get_used_rect()
@@ -35,6 +66,7 @@ func _ready():
 				var custom_data = tile_data.get_custom_data("Type")
 				if custom_data == 2048:
 					spawn_point = Vector2i(x,y)
+					emit_signal("spawn_ready", spawn_point)
 
 func _process(_delta):
 	if get_used_cells(select_layer).size() != 0:
@@ -96,6 +128,23 @@ func show_adjacent_tiles(data):
 	for tile in data:
 		set_cell(movement_layer, tile, 0, Vector2(22,50))
 
-#func delete_adjacent_tiles(data):
-	#for tile in data:
-		#erase_cell(movement_layer, tile)
+func delete_adjacent_tiles():
+	var used_cells = get_used_cells(movement_layer)
+	for cell in used_cells:
+		erase_cell(movement_layer, cell)
+
+func get_current_tile_type():
+	var player_position: Vector2i = local_to_map(global_position)
+	var cell_x = int(player_position.x)
+	var cell_y = int(player_position.y)
+	var tile_data = get_cell_tile_data(type_layer, Vector2i(cell_x, cell_y))
+	
+	if tile_data and tile_data.get_custom_data("Type"):
+		var tile_type_value = tile_data.get_custom_data("Type")
+		
+		# Buscar el nombre del tipo de casilla en el enum del TileMap
+		for name in SquareType.keys():
+			if SquareType[name] == tile_type_value:
+				return name
+	
+	return "NONE"

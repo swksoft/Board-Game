@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cagyhpwrfybfn"]
+
+[ext_resource type="Script" path="res://tests/drag and drop/test_scene.gd" id="1_p10to"]
+
+[node name="DragManager" type="Node2D"]
+script = ExtResource("1_p10to")

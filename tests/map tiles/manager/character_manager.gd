@@ -1,9 +1,11 @@
-extends Node2D
+class_name CharacterManagerBoard extends Node2D
 
-@export var tile_map_path : BoardTile
+@export var tile_map : BoardTile
+@export var character_scene : PackedScene
 
 var characters = []
 var positions = {}
+var in_group: bool = false
 
 func find_groups():
 	positions = {}
@@ -28,22 +30,24 @@ func find_groups():
 
 func _ready():
 	EventsTest.character_moved.connect(on_character_moved)
+
+func move(body, target_tile, group):
+	tile_map.delete_adjacent_tiles()
+	var previous_global = global_position
+	body.position = tile_map.map_to_local(target_tile)
+			
+	tile_map.show_adjacent_tiles(tile_map.get_available_tiles(body.position, body.stats_board.movement))
+			
+	body.current_position = tile_map.local_to_map(position)
 	
-	# Load Characters
-	var available_characters = GlobalDataTest.available_characters
-	var number = 0
+	EventsTest.emit_character_moved(body, group, previous_global)
 	
-	for char_data in available_characters:
-		var char_instance = preload("res://tests/map tiles/character_test.tscn").instantiate()
-		
-		char_instance.tile_map_path = tile_map_path
-		char_instance.spawn_point = tile_map_path.spawn_point
-		characters.append(char_instance)
-		char_instance.name = str(char_data["name"])
-		add_child(char_instance)
-		char_instance.stats_board.set_character_data(char_data)
-	find_groups()
+	var current_tile_name = tile_map.get_current_tile_type()
+	if current_tile_name != "NONE" or current_tile_name != "SPAWN":
+		EventsTest.emit_board_message_display(body.stats_board.character_data["name"] + " está en un panel de tipo: " + current_tile_name)
 	
+	tile_map.get_panel(tile_map.get_current_tile_type())
+
 func on_character_moved(character: CharacterBoard, move_in_group, from):
 	if move_in_group:
 		for position in positions:
@@ -64,7 +68,7 @@ func _on_group_options_move_entire_group(chars):
 	if average_movement <= 1:
 		average_movement = 1
 	
-	tile_map_path.show_adjacent_tiles(tile_map_path.get_available_tiles(chars[0].global_position, average_movement))
+	tile_map.show_adjacent_tiles(tile_map.get_available_tiles(chars[0].global_position, average_movement))
 
 func _on_group_options_move_group(char):
 	for child in get_children().size():
@@ -72,4 +76,24 @@ func _on_group_options_move_group(char):
 		
 		if str(char_name) == str(char):
 			char_name.can_move = true
-			char_name.show_adjacent_tiles(char_name.get_available_tiles())
+			tile_map.show_adjacent_tiles(tile_map.get_available_tiles(char.global_position, char.stats_board.movement))
+
+func _on_tile_map_spawn_ready(location):
+	# Load Characters
+	var available_characters = GlobalDataTest.available_characters
+	var number = 0
+	
+	for char_data in available_characters:
+		var char_instance = character_scene.instantiate()
+		
+		#char_instance.tile_map_path = tile_map
+		char_instance.spawn_point = location
+		char_instance.character_manager = self
+		characters.append(char_instance)
+		char_instance.name = str(char_data["name"])
+		add_child(char_instance)
+		char_instance.stats_board.set_character_data(char_data)
+		char_instance.tile_map = tile_map
+		char_instance.position = tile_map.map_to_local(location)
+		
+	find_groups()

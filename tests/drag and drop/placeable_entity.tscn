@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dl270wpr8inuw" path="res://icon.svg" id="1_xt87n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvj08"]
-size = Vector2(128, 128)
+size = Vector2(32, 32)
 
 [node name="PlaceableEntity" type="Node2D"]
 script = ExtResource("1_aec0m")
