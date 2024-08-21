@@ -10,3 +10,5 @@ ptt.json
 *.translation
 *.translation
 ptt.json
+"*.translation" 
+"ptt.json" 
