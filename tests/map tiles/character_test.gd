@@ -41,6 +41,11 @@ func _input(event):
 		if Input.is_action_just_pressed("click") and is_walkable:
 			if character_manager.in_group: character_manager.move(self, target_tile, true)
 			else: character_manager.move(self, target_tile, false)
+			
+func move(path):
+	for tile in path:
+		await get_tree().create_timer(0.1).timeout
+		position = tile_map.map_to_local(tile)
 
 func enter_group(n):
 	var i = n + 1
