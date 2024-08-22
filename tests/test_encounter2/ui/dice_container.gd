@@ -9,7 +9,7 @@ func _ready():
 	combat_manager.player_turn.connect(clear)
 	
 func on_dice_thrown(result, user):
-	if user.type != "friend": return
+	if user.type == "enemy": return
 	var dice_scene = dice_scene.instantiate()
 	dice_scene.init(result)
 	add_child(dice_scene)

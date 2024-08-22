@@ -31,8 +31,6 @@ func _ready():
 	
 	for char_data in available_characters: characters.push_back(char_data)
 	for enemy_data in available_enemies: enemies.push_back(enemy_data)
-	
-	on_turn_advance()
 	emit_signal("update_turns", turns)
 	
 	chars_ready.emit()
@@ -77,16 +75,16 @@ func get_total_health():
 func _on_attack_button_button_down():
 	emit_signal("update_turns", turns)
 	player_turn.emit()
-	party_attack(characters, enemies)
-	party_attack(enemies, characters)
+	await party_attack(characters, enemies)
+	await party_attack(enemies, characters)
 	#enemy_attack(enemies, characters)
 	turn_advanced.emit()
 
-func take_damage(amount, target):
-	target -= amount
+func take_damage(amount):
+	player_hp -= amount
 	
-	if target <= 0:
-		target = 0
+	if player_hp <= 0:
+		player_hp = 0
 		update_information.emit("Game Over")
 		$"../GameOverScreen".visible = true
 		get_tree().paused = true
@@ -98,7 +96,7 @@ func party_attack(party, opp):
 	var icon : String
 	
 	for character in party:
-		#await get_tree().create_timer(time).timeout
+		await get_tree().create_timer(time).timeout
 		var dice = dice_manager.throw_dice(character.dice, character)
 		var action =  character.actions[dice-1]
 		
@@ -108,7 +106,7 @@ func party_attack(party, opp):
 		match action:
 			"attack":
 				if character.type == "enemy":
-					take_damage(character.atk, player_hp)
+					take_damage(character.atk)
 				else:
 					#print_debug("ENEMY SELECTED: ", enemy_container.find_child(str(opp.pick_random()["name"]))) # opp.pick_random()["name"]).name
 					var enemy_selected = get_node(enemy_container).get_node(opp.pick_random()["name"])
@@ -118,18 +116,18 @@ func party_attack(party, opp):
 					enemy_selected.hp -= character.atk
 					
 				icon = "[img=16x16 region=960,1472,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
-			"assassinate": 
-				if character.type == "enemy":
-					var chance = 100 - floor(player_hp / player_total_hp) * 100
-					var rng = RandomNumberGenerator.new()
-					var my_random_number = rng.randf_range(0, 100)
-					if my_random_number <= chance: take_damage(player_hp, player_hp)
-				else:
-					var picked = get_node(enemy_container).get_node(opp.pick_random()["name"])
-					var chance = 100 - floor(picked.hp / picked.max_hp) * 100
-					var rng = RandomNumberGenerator.new()
-					var my_random_number = rng.randf_range(0, 100)
-					if my_random_number <= chance: take_damage(picked.hp, picked.max_hp)
+			#"assassinate": 
+				#if character.type == "enemy":
+					#var chance = 100 - floor(player_hp / player_total_hp) * 100
+					#var rng = RandomNumberGenerator.new()
+					#var my_random_number = rng.randf_range(0, 100)
+					#if my_random_number <= chance: take_damage(player_hp)
+				#else:
+					#var picked = get_node(enemy_container).get_node(opp.pick_random()["name"])
+					#var chance = 100 - floor(picked.hp / picked.max_hp) * 100
+					#var rng = RandomNumberGenerator.new()
+					#var my_random_number = rng.randf_range(0, 100)
+					#if my_random_number <= chance: take_damage(picked.hp, picked.max_hp)
 				
 				icon = "[img=16x16 region=480,1632,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
 			"heal":

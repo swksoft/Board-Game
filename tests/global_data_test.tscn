@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0ot3yv6dp7wq"]
+[gd_scene load_steps=2 format=3 uid="uid://5rgky6n763eq"]
 
 [ext_resource type="Script" path="res://tests/global_data_test.gd" id="1_lgnll"]
 
