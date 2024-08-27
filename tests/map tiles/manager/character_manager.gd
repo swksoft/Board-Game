@@ -41,13 +41,21 @@ func move(body, target_tile, group):
 	
 	EventsTest.emit_character_moved(body, group, previous_global)
 	
-	var current_tile_name = tile_map.get_current_tile_type()
-	if current_tile_name != "NONE" or current_tile_name != "SPAWN":
-		EventsTest.emit_board_message_display(body.stats_board.character_data["name"] + " está en un panel de tipo: " + current_tile_name)
+	var current_tile_name = tile_map.get_current_tile_type(target_tile)
 	
-	tile_map.get_panel(tile_map.get_current_tile_type())
+	if current_tile_name != "NONE" or current_tile_name != "SPAWN":
+		if in_group:
+			EventsTest.emit_board_message_display("El grupo cayó en un panel tipo: " + current_tile_name.to_lower())
+		else:
+			EventsTest.emit_board_message_display(body.stats_board.character_data["name"] + " cayó en un panel tipo: " + current_tile_name.to_lower())
+	
+	body.arrival()
+	
+	# TRIGGER
+	tile_map.get_panel(current_tile_name)
 
 func on_character_moved(character: CharacterBoard, move_in_group, from):
+	print("A")
 	if move_in_group:
 		for position in positions:
 			if position == from:
@@ -56,6 +64,7 @@ func on_character_moved(character: CharacterBoard, move_in_group, from):
 	find_groups()
 
 func _on_group_options_move_entire_group(chars):
+	print("B")
 	var average_movement = 0
 	var sum = 0
 	

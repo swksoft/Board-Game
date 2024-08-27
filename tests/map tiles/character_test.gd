@@ -10,13 +10,24 @@ var can_move = false
 var spawn_point : Vector2i
 var current_position : Vector2i
 
+var moved_character = false
+var moved_group = false
+
 func _ready():
 	EventsTest.grouped_character.connect(on_grouped_char)
+	EventsTest.end_turn_board.connect(on_new_turn)
 	#character_manager = get_tree().get_first_node_in_group("character_manager") # QUEEEE
+
+func on_new_turn():
+	modulate = Color("#ffffffff")
+	moved_character = false
 
 func _process(_delta):
 	if mouse_inside_area:
 		if Input.is_action_just_pressed("click"):
+			if moved_character == true:
+				EventsTest.emit_board_message_display(name + "ya se ha movido.")
+				return
 			if character_manager.in_group == true:
 				EventsTest.emit_grouped_character(self)
 			else:
@@ -38,10 +49,17 @@ func _input(event):
 		
 		var is_walkable = tile_data.get_custom_data("CanMove")
 		
-		if Input.is_action_just_pressed("click") and is_walkable:
-			if character_manager.in_group: character_manager.move(self, target_tile, true)
-			else: character_manager.move(self, target_tile, false)
-			
+		if Input.is_action_just_pressed("click") and is_walkable and moved_character == false:
+			if character_manager.in_group:
+				character_manager.move(self, target_tile, true)
+				self_modulate = Color("#ffffff70")
+			else:
+				character_manager.move(self, target_tile, false)
+
+func arrival():
+	moved_character = true
+	modulate = Color("#ffffff70")
+
 func move(path):
 	for tile in path:
 		await get_tree().create_timer(0.1).timeout

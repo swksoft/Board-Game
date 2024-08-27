@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://tests/map tiles/UI/Buttons.gd" id="1_eor3x"]
 [ext_resource type="Script" path="res://tests/map tiles/UI/LogText.gd" id="1_lsj4l"]
+[ext_resource type="Script" path="res://tests/map tiles/UI/RichTextLabel.gd" id="3_2a5v5"]
 [ext_resource type="Script" path="res://tests/map tiles/UI/EscapeWindow.gd" id="3_xngsc"]
 [ext_resource type="PackedScene" uid="uid://5nmg1gih3jg6" path="res://tests/menu/menu_test.tscn" id="4_vemvb"]
-[ext_resource type="Texture2D" uid="uid://6dkm4wg54y1y" path="res://tests/chest section/entities/assets/chest_2_open.png" id="5_8m7mq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_108f7"]
 bg_color = Color(0.135209, 0.135209, 0.135209, 1)
@@ -22,65 +22,9 @@ anchor_right = 0.95
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 metadata/_edit_vertical_guides_ = [162.0, 243.0, 202.0]
-metadata/_edit_horizontal_guides_ = [398.0, 358.0, 439.0]
-
-[node name="N1" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -24.0
-offset_right = -657.6
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="N2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 111.0
-offset_top = 319.0
-offset_right = 42.4
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="N3" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 111.0
-offset_top = -24.0
-offset_right = 42.4
-offset_bottom = -432.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="N4" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 761.0
-offset_top = -23.0
-offset_right = 42.4
-offset_bottom = -110.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+metadata/_edit_horizontal_guides_ = [398.0, 358.0, 439.0, 344.0]
 
 [node name="HUD" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -98,13 +42,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="LogContainer" type="PanelContainer" parent="HUD/Upper"]
-custom_minimum_size = Vector2(100, 320)
+custom_minimum_size = Vector2(150, 320)
+layout_direction = 2
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="LogText" type="RichTextLabel" parent="HUD/Upper/LogContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
@@ -135,7 +81,7 @@ metadata/_edit_lock_ = true
 
 [node name="BoardViewer" type="PanelContainer" parent="HUD/Upper"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(650, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 auto_translate = false
@@ -187,6 +133,29 @@ size_flags_vertical = 4
 focus_mode = 0
 text = "v"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Upper/BoardViewer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Upper/BoardViewer/HBoxContainer"]
+custom_minimum_size = Vector2(600, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "TURNS LEFT [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
+script = ExtResource("3_2a5v5")
+
+[node name="EndTurn" type="Button" parent="HUD/Upper/BoardViewer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "END TURN"
+
 [node name="Bottom" type="HBoxContainer" parent="HUD"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -227,9 +196,161 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_108f7")
 
+[node name="GridContainer" type="GridContainer" parent="HUD/Bottom/PartyContainer/CurrentParty"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Bottom/PartyContainer/CurrentParty/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HUD/Bottom/PartyContainer/CurrentParty/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HUD/Bottom/PartyContainer/CurrentParty/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HUD/Bottom/PartyContainer/CurrentParty/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
 [node name="AvailableCharacters" type="PanelContainer" parent="HUD/Bottom/PartyContainer"]
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HUD/Bottom/PartyContainer/AvailableCharacters"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 12
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect17" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect18" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect19" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect20" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect21" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect22" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect23" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect24" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect25" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect26" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect27" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
+
+[node name="ColorRect28" type="ColorRect" parent="HUD/Bottom/PartyContainer/AvailableCharacters/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.26302, 0.26302, 0.26302, 1)
 
 [node name="EscapeWindow" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -270,66 +391,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "No"
 
-[node name="Characters" type="Control" parent="."]
-layout_mode = 1
-anchor_left = 0.145
-anchor_top = 0.75
-anchor_right = 0.99
-anchor_bottom = 0.98
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="CurrentCharacters" type="GridContainer" parent="Characters"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 7.85301
-offset_top = -39.68
-offset_right = 95.853
-offset_bottom = 48.32
-grow_vertical = 2
-theme_override_constants/h_separation = 20
-columns = 2
-
-[node name="TextureRect" type="TextureRect" parent="Characters/CurrentCharacters"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_8m7mq")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Characters/CurrentCharacters"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_8m7mq")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Characters/CurrentCharacters"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_8m7mq")
-expand_mode = 1
-
-[node name="TextureRect4" type="TextureRect" parent="Characters/CurrentCharacters"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_8m7mq")
-expand_mode = 1
-
-[node name="AvailableCharacters" type="GridContainer" parent="Characters"]
-layout_mode = 0
-offset_left = 104.0
-offset_right = 651.0
-offset_bottom = 99.0
-
+[connection signal="pressed" from="HUD/Upper/BoardViewer/EndTurn" to="HUD/Upper/BoardViewer/Buttons" method="_on_end_turn_pressed"]
 [connection signal="pressed" from="HUD/Bottom/Buttons/Escape" to="EscapeWindow" method="_on_escape_pressed"]
 [connection signal="pressed" from="EscapeWindow/V/H/ButtonYes" to="EscapeWindow" method="_on_button_yes_pressed"]
 [connection signal="pressed" from="EscapeWindow/V/H/ButtonNo" to="EscapeWindow" method="_on_button_no_pressed"]

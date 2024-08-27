@@ -7,7 +7,7 @@ var on_menu = false
 
 @onready var button_container = %V
 @onready var button_message = %ButtonMessage
-@onready var character_manager = $"../../CharacterManager"
+@onready var character_manager = $"../../../CharacterManager"
 
 func _ready():
 	EventsTest.grouped_character.connect(on_grouped_character)

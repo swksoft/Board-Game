@@ -133,8 +133,8 @@ func delete_adjacent_tiles():
 	for cell in used_cells:
 		erase_cell(movement_layer, cell)
 
-func get_current_tile_type():
-	var player_position: Vector2i = local_to_map(global_position)
+func get_current_tile_type(player_position : Vector2i):
+	#var player_position: Vector2i = local_to_map(char_pos)
 	var cell_x = int(player_position.x)
 	var cell_y = int(player_position.y)
 	var tile_data = get_cell_tile_data(type_layer, Vector2i(cell_x, cell_y))
@@ -142,7 +142,6 @@ func get_current_tile_type():
 	if tile_data and tile_data.get_custom_data("Type"):
 		var tile_type_value = tile_data.get_custom_data("Type")
 		
-		# Buscar el nombre del tipo de casilla en el enum del TileMap
 		for name in SquareType.keys():
 			if SquareType[name] == tile_type_value:
 				return name
