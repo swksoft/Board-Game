@@ -8,3 +8,9 @@ func _ready():
 
 func _move_camera(direction):
 	EventsTest.emit_move_camera(direction)
+
+func _on_end_turn_pressed():
+	%EndTurn.disabled = true
+	EventsTest.emit_end_turn_board()
+	#TODO: cambiar, solo puede habilitarse boton una vez todo lo necesario esté hecho, añadir un poco de retraso
+	%EndTurn.disabled = false
