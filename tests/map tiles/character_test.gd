@@ -39,7 +39,7 @@ func _process(_delta):
 					tile_map.show_adjacent_tiles(tile_map.get_available_tiles(position, stats_board.movement))
 		elif Input.is_action_just_pressed("right_click"):
 			can_move = false
-			character_manager.delete_adjacent_tiles()
+			tile_map.delete_adjacent_tiles()
 
 func _input(event):
 	if can_move:
@@ -52,7 +52,6 @@ func _input(event):
 		if Input.is_action_just_pressed("click") and is_walkable and moved_character == false:
 			if character_manager.in_group:
 				character_manager.move(self, target_tile, true)
-				self_modulate = Color("#ffffff70")
 			else:
 				character_manager.move(self, target_tile, false)
 

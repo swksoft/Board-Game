@@ -57,9 +57,14 @@ func on_grouped_character(grouped_char):
 			
 			button.text = str(char.name)
 			button.connect("pressed", _on_button_pressed.bind(char)) # funciona
+			
 			#button.pressed.connect(self._on_button_pressed, char) # no funciona
 			#button.pressed.connect(self._on_button_pressed.bind(char)) # funciona
 			#button.connect("pressed", self, "_on_button_pressed", [character])
+			
+			if char.moved_character == true:
+				button.disabled = true
+			
 			button_container.add_child(button)
 			
 	# Cancelar

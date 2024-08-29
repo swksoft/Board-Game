@@ -59,6 +59,33 @@ func load_characters(file_path: String):
 			"actions": char_data["actions"].split(",")
 		}
 
+func load_characters_as_resources(file_path: String) -> Array:
+	var characters = []
+	var data = load_csv(file_path)
+	
+	for row in data:
+		var char_res = CharacterResource.new()
+		
+		char_res.char_name = row["name"]
+		char_res.class_char = row["class"]
+		char_res.attack = row["atk"].to_int()
+		char_res.evasion = row["eva"].to_int()
+		char_res.defense = row["def"].to_int()
+		char_res.luck_board = row["lck_board"].to_int()
+		char_res.technique = row["tch"].to_int()
+		char_res.agility = row["agl"].to_int()
+		char_res.balls = row["bls"].to_int()
+		char_res.luck_interact = row["lck_interact"].to_int()
+		char_res.charisma = row["cht"].to_int()
+		char_res.icon = load(row["icon"])
+		char_res.max_hp = row.get("max_hp", 100).to_int()
+		char_res.dice = row.get("dice", 6).to_int()
+		char_res.actions = row.get("actions", "").split(",")
+		
+		characters.append(char_res)
+		
+	return characters
+
 func load_enemies(file_path: String):
 	var data = load_csv(file_path)
 	for i in range(data.size()):
@@ -114,6 +141,12 @@ func load_all_data():
 func _ready():
 	load_all_data()
 	print_available_data()
+	
+	var characters = load_characters_as_resources("res://resources/data/characters.csv")
+	
+	# Ahora puedes acceder a los datos de cada personaje usando el resource
+	for char_res in characters:
+		prints(char_res.char_name, char_res.attack, char_res.actions)
 
 func print_available_data():
 	print_rich("[font_size=16][pulse][color=red]Available Characters:[/color][/pulse][/font_size] ", available_characters)

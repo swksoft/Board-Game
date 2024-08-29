@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://dn3gece6psllb"]
+
+[ext_resource type="Texture2D" uid="uid://ccamcua2xv22h" path="res://tests/chest section/entities/assets/hero.png" id="1_ihjkj"]
+[ext_resource type="Script" path="res://resources/character_resource.gd" id="1_o7lfr"]
+
+[resource]
+script = ExtResource("1_o7lfr")
+char_name = "John"
+description = "Buena persona pero mal perdedor."
+class_char = "Archer"
+icon = ExtResource("1_ihjkj")
+max_hp = 15
+agility = 3
+defense = 7
+evasion = 2
+attack = 5
+luck = 6
+dice = 6
+actions = ["Attack", "Fly", "Dance", "Evade", "Evade", "Attack"]
+technique = 6
+balls = 12
+luck_interact = 7
+charisma = 4

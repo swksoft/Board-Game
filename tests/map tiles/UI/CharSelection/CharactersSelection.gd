@@ -1,15 +1,15 @@
 extends Control
+class_name GridSelector
 
-@onready var slotContainer = $TextureRect/Slots
-@onready var charContainer = $TextureRect/AvailableCharacters
+@export var slotContainer_path : GridContainer
+@export var charContainer_path : GridContainer
 
-func _process(delta):
-	var mouse_position = get_global_mouse_position()
-	
-	if mouse_position.y > 344 and mouse_position.x > 152:
-		mouse_filter = Control.MOUSE_FILTER_PASS
-	else:
-		mouse_filter = Control.MOUSE_FILTER_IGNORE
+var inventoryDict = {}
+
+var items = []
+
+@onready var slotContainer = slotContainer_path
+@onready var charContainer = charContainer_path
 
 func _get_drag_data(at_position):
 	var dragSlotNode = get_slot_node_at_position(at_position)
@@ -39,6 +39,8 @@ func _drop_data(at_position, dragSlotNode):
 		dragSlotNode.texture = null
 	else:
 		dragSlotNode.texture = targetTexture
+		
+	EventsTest.emit_signal_time_down()
 
 func get_slot_node_at_position(pos):
 	var allSlotNodes = (slotContainer.get_children() + charContainer.get_children())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bubh7ew40o7yh"]
+[gd_scene load_steps=13 format=3 uid="uid://bubh7ew40o7yh"]
 
 [ext_resource type="PackedScene" uid="uid://cwav2cr78igxv" path="res://tests/map tiles/tile_map.tscn" id="1_78a86"]
 [ext_resource type="Shader" path="res://shaders/pattern/tile_scroll.gdshader" id="1_wdyjy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bj64jsq4g11p1" path="res://tests/map tiles/UI/CharSelection/characters_selection.tscn" id="7_njhlo"]
 [ext_resource type="Texture2D" uid="uid://8qrhwhakpqa8" path="res://resources/textures/lightpix.png" id="8_3urgp"]
 [ext_resource type="Texture2D" uid="uid://cyxv5pheb442b" path="res://tests/chest section/entities/assets/chest_2_closed.png" id="8_k5lc8"]
+[ext_resource type="Script" path="res://tests/map tiles/UI/CharSelection/ingame_selection.gd" id="8_twimh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5odgd"]
 shader = ExtResource("1_wdyjy")
@@ -56,11 +57,16 @@ offset_left = -42.7
 offset_right = 42.7
 metadata/_edit_horizontal_guides_ = [321.0]
 
+[node name="EscapeWindow" parent="HUD/UserInterface/Ui" index="3"]
+offset_top = -24.0
+offset_bottom = 25.0
+
 [node name="GroupOptions" parent="HUD/UserInterface" instance=ExtResource("4_ft1k6")]
 visible = false
 
 [node name="CharactersSelection" parent="HUD/UserInterface" instance=ExtResource("7_njhlo")]
 mouse_filter = 2
+script = ExtResource("8_twimh")
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" parent="HUD/UserInterface/CharactersSelection" index="0"]

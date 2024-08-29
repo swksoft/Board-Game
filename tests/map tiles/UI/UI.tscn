@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ocynuoaqqpy5"]
+[gd_scene load_steps=9 format=3 uid="uid://ocynuoaqqpy5"]
 
 [ext_resource type="Script" path="res://tests/map tiles/UI/Buttons.gd" id="1_eor3x"]
 [ext_resource type="Script" path="res://tests/map tiles/UI/LogText.gd" id="1_lsj4l"]
 [ext_resource type="Script" path="res://tests/map tiles/UI/RichTextLabel.gd" id="3_2a5v5"]
 [ext_resource type="Script" path="res://tests/map tiles/UI/EscapeWindow.gd" id="3_xngsc"]
+[ext_resource type="Script" path="res://tests/map tiles/UI/CheckWindow.gd" id="4_uilc0"]
 [ext_resource type="PackedScene" uid="uid://5nmg1gih3jg6" path="res://tests/menu/menu_test.tscn" id="4_vemvb"]
+[ext_resource type="Script" path="res://tests/map tiles/UI/ItemsWindow.gd" id="5_wumyu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_108f7"]
 bg_color = Color(0.135209, 0.135209, 0.135209, 1)
@@ -352,6 +354,28 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 color = Color(0.26302, 0.26302, 0.26302, 1)
 
+[node name="CheckWindow" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_uilc0")
+
+[node name="ItemsWindow" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_wumyu")
+
 [node name="EscapeWindow" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
@@ -392,6 +416,8 @@ layout_mode = 2
 text = "No"
 
 [connection signal="pressed" from="HUD/Upper/BoardViewer/EndTurn" to="HUD/Upper/BoardViewer/Buttons" method="_on_end_turn_pressed"]
+[connection signal="pressed" from="HUD/Bottom/Buttons/Check" to="CheckWindow" method="_on_check_pressed"]
+[connection signal="pressed" from="HUD/Bottom/Buttons/Items" to="ItemsWindow" method="_on_items_pressed"]
 [connection signal="pressed" from="HUD/Bottom/Buttons/Escape" to="EscapeWindow" method="_on_escape_pressed"]
 [connection signal="pressed" from="EscapeWindow/V/H/ButtonYes" to="EscapeWindow" method="_on_button_yes_pressed"]
 [connection signal="pressed" from="EscapeWindow/V/H/ButtonNo" to="EscapeWindow" method="_on_button_no_pressed"]

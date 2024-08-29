@@ -10,6 +10,7 @@ signal grouped_character(char)
 signal move_camera(direction)
 signal board_message_display(text)
 signal end_turn_board()
+signal time_down()
 
 func emit_open_chest(char_stats):
 	emit_signal("open_chest", char_stats)
@@ -34,3 +35,6 @@ func emit_board_message_display(text):
 
 func emit_end_turn_board():
 	end_turn_board.emit()
+
+func emit_signal_time_down():
+	time_down.emit()

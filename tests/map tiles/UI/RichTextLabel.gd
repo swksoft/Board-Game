@@ -16,6 +16,7 @@ func turns_draw():
 # PROVISIONAL
 func _ready():
 	EventsTest.end_turn_board.connect(_on_end_turn)
+	EventsTest.time_down.connect(_on_time_out)
 	
 	# EXAMPLE
 	turns_max = 28
@@ -37,4 +38,7 @@ func game_over():
 	print(" GAME OVER (0 turnos restantes)")
 	
 func _on_end_turn():
+	pass_turn()
+
+func _on_time_out():
 	pass_turn()
