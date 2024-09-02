@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c35h16psyucp7" path="res://tests/map tiles/camera/camera_control.tscn" id="7_56epj"]
 [ext_resource type="PackedScene" uid="uid://bj64jsq4g11p1" path="res://tests/map tiles/UI/CharSelection/characters_selection.tscn" id="7_njhlo"]
 [ext_resource type="Texture2D" uid="uid://8qrhwhakpqa8" path="res://resources/textures/lightpix.png" id="8_3urgp"]
-[ext_resource type="Texture2D" uid="uid://cyxv5pheb442b" path="res://tests/chest section/entities/assets/chest_2_closed.png" id="8_k5lc8"]
 [ext_resource type="Script" path="res://tests/map tiles/UI/CharSelection/ingame_selection.gd" id="8_twimh"]
+[ext_resource type="PackedScene" uid="uid://2xy84hqyg1yy" path="res://tests/map tiles/UI/node_slot.tscn" id="9_av83j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5odgd"]
 shader = ExtResource("1_wdyjy")
@@ -81,15 +81,6 @@ offset_bottom = 444.0
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 
-[node name="TextureRect2" parent="HUD/UserInterface/CharactersSelection/TextureRect/Slots" index="1"]
-texture = ExtResource("8_k5lc8")
-
-[node name="TextureRect3" parent="HUD/UserInterface/CharactersSelection/TextureRect/Slots" index="2"]
-texture = ExtResource("8_k5lc8")
-
-[node name="TextureRect4" parent="HUD/UserInterface/CharactersSelection/TextureRect/Slots" index="3"]
-texture = ExtResource("8_k5lc8")
-
 [node name="AvailableCharacters" parent="HUD/UserInterface/CharactersSelection/TextureRect" index="1"]
 offset_left = 273.0
 offset_top = 360.0
@@ -99,145 +90,47 @@ theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 12
 
-[node name="TextureRect5" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="4"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot11" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="10" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect6" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="5"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot12" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="11" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect7" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="6"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot13" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="12" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect8" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="7"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot14" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="13" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect9" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="8"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot15" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="14" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect10" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="9"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot16" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="15" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect11" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="10"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot17" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="16" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect12" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="11"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot18" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="17" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect13" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="12"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot19" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="18" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect14" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="13"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot20" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="19" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect15" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="14"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot21" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="20" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect16" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="15"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot22" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="21" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect17" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="16"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot23" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="22" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect18" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="17"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot24" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="23" instance=ExtResource("9_av83j")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
-
-[node name="TextureRect19" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="18"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
-
-[node name="TextureRect20" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="19"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
-
-[node name="TextureRect21" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="20"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
-
-[node name="TextureRect22" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="21"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
-
-[node name="TextureRect23" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="22"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
-
-[node name="TextureRect24" type="TextureRect" parent="HUD/UserInterface/CharactersSelection/TextureRect/AvailableCharacters" index="23"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
 [node name="Scroll" type="CanvasLayer" parent="HUD"]
 layer = -3
@@ -282,6 +175,7 @@ metadata/_edit_lock_ = true
 
 [node name="BG" type="CanvasLayer" parent="HUD"]
 layer = 0
+visible = false
 
 [node name="Control" type="Control" parent="HUD/BG"]
 clip_contents = true

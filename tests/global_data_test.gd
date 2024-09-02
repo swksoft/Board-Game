@@ -145,6 +145,8 @@ func _ready():
 	var characters = load_characters_as_resources("res://resources/data/characters.csv")
 	
 	# Ahora puedes acceder a los datos de cada personaje usando el resource
+	print_debug(characters)
+	
 	for char_res in characters:
 		prints(char_res.char_name, char_res.attack, char_res.actions)
 

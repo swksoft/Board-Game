@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://tests/menu/menu_test.gd" id="1_eyodf"]
 [ext_resource type="PackedScene" uid="uid://bj64jsq4g11p1" path="res://tests/map tiles/UI/CharSelection/characters_selection.tscn" id="2_m3xlo"]
-[ext_resource type="Texture2D" uid="uid://dl270wpr8inuw" path="res://icon.svg" id="3_tbr7w"]
+[ext_resource type="PackedScene" uid="uid://2xy84hqyg1yy" path="res://tests/map tiles/UI/node_slot.tscn" id="3_5me87"]
 
 [node name="MenuTest" type="Control"]
 layout_mode = 3
@@ -60,43 +60,57 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Salir"
 
-[node name="CharactersSelection" parent="." instance=ExtResource("2_m3xlo")]
-layout_mode = 1
+[node name="ScreenSelection" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="CharactersSelection"]
+[node name="ColorRect" type="ColorRect" parent="ScreenSelection"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 814.0
+offset_bottom = 440.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="CharactersSelection"]
-layout_mode = 2
+[node name="Label" type="Label" parent="ScreenSelection"]
+layout_mode = 0
 offset_left = 336.0
 offset_top = 112.0
 offset_right = 521.0
 offset_bottom = 132.0
 text = "Personaliza tu grupo:"
 
-[node name="Button" type="Button" parent="CharactersSelection"]
+[node name="Return" type="Button" parent="ScreenSelection"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Return"
+
+[node name="Finish" type="Button" parent="ScreenSelection"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -27.0
-offset_top = -80.0
-offset_right = 31.0
-offset_bottom = -52.0
+offset_left = 378.0
+offset_top = 353.0
+offset_right = 436.0
+offset_bottom = 381.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
+disabled = true
 text = "LISTO"
 
-[node name="GridContainer" type="GridContainer" parent="CharactersSelection"]
+[node name="GridContainer" type="GridContainer" parent="ScreenSelection"]
 layout_mode = 0
 offset_left = 393.0
 offset_top = 176.0
@@ -104,27 +118,27 @@ offset_right = 461.0
 offset_bottom = 244.0
 columns = 2
 
-[node name="ColorRect" type="ColorRect" parent="CharactersSelection/GridContainer"]
+[node name="ColorRect" type="ColorRect" parent="ScreenSelection/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="CharactersSelection/GridContainer"]
+[node name="ColorRect2" type="ColorRect" parent="ScreenSelection/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="CharactersSelection/GridContainer"]
+[node name="ColorRect3" type="ColorRect" parent="ScreenSelection/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="CharactersSelection/GridContainer"]
+[node name="ColorRect4" type="ColorRect" parent="ScreenSelection/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="GridContainer2" type="GridContainer" parent="CharactersSelection"]
+[node name="GridContainer2" type="GridContainer" parent="ScreenSelection"]
 layout_mode = 0
 offset_left = 213.0
 offset_top = 286.0
@@ -132,130 +146,135 @@ offset_right = 641.0
 offset_bottom = 354.0
 columns = 12
 
-[node name="ColorRect" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect2" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect3" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect4" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect5" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect6" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect6" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect7" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect7" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect8" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect8" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect9" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect9" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect10" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect10" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect11" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect11" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect12" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect12" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect13" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect13" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect14" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect14" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect15" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect15" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect16" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect16" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect17" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect17" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect18" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect18" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect19" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect19" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect20" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect20" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect21" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect21" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect22" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect22" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect23" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect23" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="ColorRect24" type="ColorRect" parent="CharactersSelection/GridContainer2"]
+[node name="ColorRect24" type="ColorRect" parent="ScreenSelection/GridContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 color = Color(0.179616, 0.179616, 0.179616, 1)
 
-[node name="TextureRect" parent="CharactersSelection" index="5"]
+[node name="CharactersSelection" parent="ScreenSelection" instance=ExtResource("2_m3xlo")]
+layout_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" parent="ScreenSelection/CharactersSelection" index="0"]
 self_modulate = Color(1, 1, 1, 0)
+mouse_filter = 2
 
-[node name="Slots" parent="CharactersSelection/TextureRect" index="0"]
+[node name="Slots" parent="ScreenSelection/CharactersSelection/TextureRect" index="0"]
 offset_left = 393.0
 offset_top = 176.0
 offset_right = 461.0
@@ -263,19 +282,57 @@ offset_bottom = 244.0
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 
-[node name="TextureRect2" parent="CharactersSelection/TextureRect/Slots" index="1"]
-texture = ExtResource("3_tbr7w")
-
-[node name="TextureRect3" parent="CharactersSelection/TextureRect/Slots" index="2"]
-texture = ExtResource("3_tbr7w")
-
-[node name="AvailableCharacters" parent="CharactersSelection/TextureRect" index="1"]
+[node name="AvailableCharacters" parent="ScreenSelection/CharactersSelection/TextureRect" index="1"]
 offset_left = 213.0
 offset_top = 286.0
 offset_right = 641.0
 offset_bottom = 354.0
 columns = 12
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="NodeSlot11" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="10" instance=ExtResource("3_5me87")]
+layout_mode = 2
 
-[editable path="CharactersSelection"]
+[node name="NodeSlot12" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="11" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot13" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="12" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot14" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="13" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot15" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="14" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot16" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="15" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot17" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="16" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot18" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="17" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot19" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="18" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot20" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="19" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot21" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="20" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot22" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="21" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot23" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="22" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[node name="NodeSlot24" parent="ScreenSelection/CharactersSelection/TextureRect/AvailableCharacters" index="23" instance=ExtResource("3_5me87")]
+layout_mode = 2
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ScreenSelection/Return" to="." method="_on_return_pressed"]
+
+[editable path="ScreenSelection/CharactersSelection"]

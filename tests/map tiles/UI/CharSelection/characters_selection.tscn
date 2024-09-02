@@ -1,12 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj64jsq4g11p1"]
+[gd_scene load_steps=4 format=3 uid="uid://bj64jsq4g11p1"]
 
 [ext_resource type="Script" path="res://tests/map tiles/UI/CharSelection/CharactersSelection.gd" id="1_gow0m"]
-[ext_resource type="Texture2D" uid="uid://cyxv5pheb442b" path="res://tests/chest section/entities/assets/chest_2_closed.png" id="2_01b53"]
 [ext_resource type="Texture2D" uid="uid://dl270wpr8inuw" path="res://icon.svg" id="2_l12nn"]
-[ext_resource type="Texture2D" uid="uid://cixrgakbxq0hm" path="res://tests/chest section/entities/assets/orc.png" id="4_hrl35"]
-[ext_resource type="Texture2D" uid="uid://c4uvrkcfgjxbi" path="res://tests/chest section/entities/assets/mage.png" id="5_053mq"]
-[ext_resource type="Texture2D" uid="uid://bgb6noc048hv4" path="res://tests/chest section/entities/assets/thief.png" id="6_ltt85"]
-[ext_resource type="Texture2D" uid="uid://ccamcua2xv22h" path="res://tests/chest section/entities/assets/hero.png" id="7_4uj3d"]
+[ext_resource type="PackedScene" uid="uid://2xy84hqyg1yy" path="res://tests/map tiles/UI/node_slot.tscn" id="4_a6i0d"]
 
 [node name="CharactersSelection" type="Control" node_paths=PackedStringArray("slotContainer_path", "charContainer_path")]
 layout_mode = 3
@@ -34,34 +30,17 @@ offset_bottom = 144.0
 theme_override_constants/h_separation = 20
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect/Slots"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot" parent="TextureRect/Slots" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_01b53")
-expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="TextureRect/Slots"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot2" parent="TextureRect/Slots" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="TextureRect/Slots"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot3" parent="TextureRect/Slots" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="TextureRect/Slots"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot4" parent="TextureRect/Slots" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-expand_mode = 1
 
 [node name="AvailableCharacters" type="GridContainer" parent="TextureRect"]
 layout_mode = 0
@@ -70,34 +49,32 @@ offset_right = 651.0
 offset_bottom = 99.0
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect/AvailableCharacters"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("4_hrl35")
-expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="TextureRect/AvailableCharacters"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot2" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_053mq")
-expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="TextureRect/AvailableCharacters"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot3" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("6_ltt85")
-expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="TextureRect/AvailableCharacters"]
-custom_minimum_size = Vector2(32, 32)
+[node name="NodeSlot4" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("7_4uj3d")
-expand_mode = 1
+
+[node name="NodeSlot5" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
+layout_mode = 2
+
+[node name="NodeSlot6" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
+layout_mode = 2
+
+[node name="NodeSlot7" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
+layout_mode = 2
+
+[node name="NodeSlot8" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
+layout_mode = 2
+
+[node name="NodeSlot9" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
+layout_mode = 2
+
+[node name="NodeSlot10" parent="TextureRect/AvailableCharacters" instance=ExtResource("4_a6i0d")]
+layout_mode = 2

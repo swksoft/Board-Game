@@ -94,7 +94,7 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 110
+theme_override_constants/separation = 65
 script = ExtResource("1_eor3x")
 
 [node name="Up" type="Button" parent="HUD/Upper/BoardViewer/Buttons"]
@@ -150,7 +150,19 @@ bbcode_enabled = true
 text = "TURNS LEFT [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img] [img=16x16 region=832,1600,32,32]res://maps/assets/ProjectUtumno_full.png[/img]"
 script = ExtResource("3_2a5v5")
 
-[node name="EndTurn" type="Button" parent="HUD/Upper/BoardViewer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/Upper/BoardViewer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="HUD/Upper/BoardViewer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "UNDO LAST MOVE"
+
+[node name="EndTurn" type="Button" parent="HUD/Upper/BoardViewer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
@@ -415,7 +427,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "No"
 
-[connection signal="pressed" from="HUD/Upper/BoardViewer/EndTurn" to="HUD/Upper/BoardViewer/Buttons" method="_on_end_turn_pressed"]
+[connection signal="pressed" from="HUD/Upper/BoardViewer/HBoxContainer2/EndTurn" to="HUD/Upper/BoardViewer/Buttons" method="_on_end_turn_pressed"]
 [connection signal="pressed" from="HUD/Bottom/Buttons/Check" to="CheckWindow" method="_on_check_pressed"]
 [connection signal="pressed" from="HUD/Bottom/Buttons/Items" to="ItemsWindow" method="_on_items_pressed"]
 [connection signal="pressed" from="HUD/Bottom/Buttons/Escape" to="EscapeWindow" method="_on_escape_pressed"]

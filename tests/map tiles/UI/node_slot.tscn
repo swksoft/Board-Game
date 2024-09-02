@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://2xy84hqyg1yy"]
+
+[ext_resource type="Script" path="res://tests/map tiles/UI/node_slot.gd" id="1_hisw5"]
+
+[node name="NodeSlot" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+expand_mode = 1
+script = ExtResource("1_hisw5")
