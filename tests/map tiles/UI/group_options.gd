@@ -3,8 +3,6 @@ extends Control
 signal move_group(char)
 signal move_entire_group(chars)
 
-var on_menu = false
-
 @onready var button_container = %V
 @onready var button_message = %ButtonMessage
 @onready var character_manager = $"../../../CharacterManager"
@@ -13,20 +11,20 @@ func _ready():
 	EventsTest.grouped_character.connect(on_grouped_character)
 
 func _process(_delta):
-	if on_menu:
-		if Input.is_action_just_pressed("right_click"):
-			on_menu = false
-			visible = false
-			get_tree().paused = false
+	if character_manager.selecting_character && Input.is_action_just_pressed("right_click"): close_menu()
 
-func _cancel():
+func close_menu():
+	character_manager.selecting_character = false
 	visible = false
 	get_tree().paused = false
+
+func _cancel():
+	close_menu()
 
 func on_grouped_character(grouped_char):
 	var char_in_group = []
 	
-	on_menu = true
+	character_manager.selecting_character = true
 	get_tree().paused = true
 	visible = true
 	
@@ -80,12 +78,10 @@ func on_grouped_character(grouped_char):
 	button_container.add_child(tip)
 
 func _move_everyone(characters):
-	visible = false
-	get_tree().paused = false
+	close_menu()
 	emit_signal("move_entire_group", characters)
 
 func _on_button_pressed(character):
-	visible = false
-	get_tree().paused = false
+	close_menu()
 	emit_signal("move_group", character)
 	#print("Botón presionado para el personaje: ", character)

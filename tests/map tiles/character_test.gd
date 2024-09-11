@@ -42,27 +42,26 @@ func _process(_delta):
 			tile_map.delete_adjacent_tiles()
 
 func _input(event):
-	if can_move:
+	if can_move && !character_manager.selecting_character:
 		var target_tile = tile_map.local_to_map(get_global_mouse_position())
 		var tile_data: TileData = tile_map.get_cell_tile_data(tile_map.movement_layer, target_tile)
 		if tile_data == null: return
 		
 		var is_walkable = tile_data.get_custom_data("CanMove")
 		
-		if Input.is_action_just_pressed("click") and is_walkable and moved_character == false:
-			if character_manager.in_group:
-				character_manager.move(self, target_tile, true)
-			else:
-				character_manager.move(self, target_tile, false)
+		if Input.is_action_just_pressed("click") and is_walkable and moved_character == false and !character_manager.char_moving:
+			character_manager.move(self, target_tile)
 
 func arrival():
 	moved_character = true
 	modulate = Color("#ffffff70")
 
 func move(path):
+	character_manager.char_moving = true
 	for tile in path:
 		await get_tree().create_timer(0.1).timeout
 		position = tile_map.map_to_local(tile)
+	character_manager.char_moving = false
 
 func enter_group(n):
 	var i = n + 1
