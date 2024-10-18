@@ -1,6 +1,8 @@
 extends Control
 class_name GridSelector
 
+signal can_start
+
 @export var slotContainer_path : GridContainer
 @export var charContainer_path : GridContainer
 
@@ -15,6 +17,7 @@ var characters_used
 func _ready():
 	var available_characters = GlobalDataTest.load_characters_as_resources("res://resources/data/characters.csv")
 	var number = 0
+	var default_number = 0
 	
 	CharactersDict = {
 		"Slots": slotContainer,
@@ -22,6 +25,11 @@ func _ready():
 	}
 	
 	for child in available_characters:
+		if child.char_name == "Richard" or child.char_name == "John" or child.char_name == "Duende Verde" or child.char_name == "Cepillo":
+			slotContainer.get_child(default_number).set_data(child)
+			print_debug(slotContainer.get_child(number))
+			default_number += 1
+			continue
 		charContainer.get_child(number).set_data(child)
 		number += 1
 	
@@ -89,6 +97,26 @@ func _refresh_ui():
 	
 	for slot in characters_used:
 		if slot == null:
+			print(characters_used)
 			break
 		else:
-			print("a")
+			print(characters_used)
+
+	if characters_used[0] != null and characters_used[1] != null and characters_used[2] != null and characters_used[3] != null:
+		emit_signal("can_start")
+	else:
+		if %Finish != null:
+			%Finish.disabled = true
+
+func _on_can_start():
+	%Finish.disabled = false
+
+func _on_finish_pressed():
+	var map_01_scene = load("res://tests/map tiles/test_map.tscn").instantiate()
+	
+	var characters_scene = map_01_scene.get_node("CharacterManager")
+	
+	characters_scene.init(characters_used)
+	
+	get_tree().root.add_child(map_01_scene)
+	get_tree().current_scene.queue_free()  

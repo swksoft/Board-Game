@@ -160,7 +160,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
-text = "UNDO LAST MOVE"
+text = "UNDO"
 
 [node name="EndTurn" type="Button" parent="HUD/Upper/BoardViewer/HBoxContainer2"]
 unique_name_in_owner = true
@@ -168,7 +168,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
-text = "END TURN"
+text = "END"
 
 [node name="Bottom" type="HBoxContainer" parent="HUD"]
 layout_mode = 2

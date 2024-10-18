@@ -7,7 +7,7 @@ var character_data = {}
 
 func set_character_data(data):
 	character_data = data
-	movement = character_data["agl"]
+	movement = character_data["agility"]
 	update_icon()
 
 func update_icon():

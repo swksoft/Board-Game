@@ -3,12 +3,19 @@ class_name CharacterManagerBoard extends Node2D
 @export var tile_map : BoardTile
 @export var character_scene : PackedScene
 
+var is_init = false
+
 var characters = []
 var positions = {}
 var in_group: bool = false
 var selecting_character = false
 var char_moving = false
 
+func init(char_set):
+	characters.clear()
+	characters = char_set
+	is_init = true
+	
 func find_groups():
 	positions = {}
 	
@@ -32,6 +39,9 @@ func find_groups():
 
 func _ready():
 	EventsTest.character_moved.connect(on_character_moved)
+	
+	if is_init == false:
+		print("TESTING")
 
 func move(body, target_tile):
 	tile_map.delete_adjacent_tiles()
@@ -40,7 +50,6 @@ func move(body, target_tile):
 	var current_tile = tile_map.local_to_map(previous_global)
 	var available_tiles = tile_map.get_available_tiles(body.position, body.stats_board.movement)
 	var shortest_path = A_Star.new().find_shortest_path(current_tile, target_tile, available_tiles)
-	
 	
 	await body.move(shortest_path)
 	
@@ -91,20 +100,31 @@ func _on_group_options_move_group(char):
 
 func _on_tile_map_spawn_ready(location):
 	# Load Characters
-	var available_characters = GlobalDataTest.available_characters
-	var number = 0
+	#var available_characters = GlobalDataTest.available_characters
+	#var available_characters = characters
 	
-	for char_data in available_characters:
+	for char_data in characters:
 		var char_instance = character_scene.instantiate()
 		
-		#char_instance.tile_map_path = tile_map
-		char_instance.spawn_point = location
+		char_instance.initialize(char_data)
 		char_instance.character_manager = self
-		characters.append(char_instance)
-		char_instance.name = str(char_data["name"])
-		add_child(char_instance)
-		char_instance.stats_board.set_character_data(char_data)
+		char_instance.spawn_point = location
 		char_instance.tile_map = tile_map
 		char_instance.position = tile_map.map_to_local(location)
 		
+		add_child(char_instance)
+	
+	#for char_data in available_characters:
+		#var char_instance = character_scene.instantiate()
+		#
+		#char_instance.spawn_point = location
+		#char_instance.character_manager = self
+		##characters.append(char_instance)
+		#char_instance.name = str(char_instance["name"])
+		##char_instance.stats_board.set_character_data(char_data)
+		#char_instance.tile_map = tile_map
+		#char_instance.position = tile_map.map_to_local(location)
+		
+		#add_child(char_instance)
+
 	find_groups()
